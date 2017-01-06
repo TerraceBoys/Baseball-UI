@@ -1,6 +1,6 @@
 
 const types = {
-  TEST_ACTION: 'TEST_ACTION'
+  GAME_STARTED: 'GAME_STARTED'
 };
 
 export default types;

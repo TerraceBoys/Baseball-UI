@@ -1,13 +1,13 @@
 import actionTypes from '../actions/types';
 
 const initialState = {
-  test: 0
+  gameStarted: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.TEST_ACTION:
-      return {...state, test: state.test + 1};
+    case actionTypes.GAME_STARTED:
+      return {...state, gameStarted: true};
     default:
       return state;
   }

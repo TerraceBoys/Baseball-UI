@@ -1,9 +1,9 @@
 import actionTypes from './types';
 
-export const testAction = () => {
+export const startGame = () => {
   return (dispatch) => {
     dispatch({
-      type: actionTypes.TEST_ACTION
+      type: actionTypes.GAME_STARTED
     })
   }
 };
