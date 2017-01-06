@@ -40,7 +40,7 @@ App.propTypes = {
 
 const mapStateToProps = (state, params) => {
   return {
-    test: state.test
+    test: state.game.test
   };
 };
 
