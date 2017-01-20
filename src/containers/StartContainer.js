@@ -1,32 +1,53 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import {startGame} from '../actions/gameActions';
+import requestStatusTypes from '../utils/requestStatusTypes';
+import {startNewGame} from '../actions/gameActions';
 
 class StartContainer extends Component {
 
   constructor(props) {
     super(props);
     this.handleStartGameClick = this.handleStartGameClick.bind(this);
+    this.renderStartGameStatus = this.renderStartGameStatus.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    const {gameStarted} = nextProps;
-    if (gameStarted) {
-      this.props.push('game');
+    if (this.props.newGameId !== nextProps.newGameId) {
+      this.props.push(`game/${nextProps.newGameId}`);
     }
   }
 
   handleStartGameClick() {
-    this.props.startGame();
+    this.props.startNewGame();
+  }
+
+  renderStartGameStatus() {
+    const {startNewGameRequestStatus} = this.props;
+    if (startNewGameRequestStatus === requestStatusTypes.PENDING) {
+      return (
+        <div>
+          Setting up new game
+        </div>
+      );
+    } else if (startNewGameRequestStatus === requestStatusTypes.FAILED) {
+      return (
+        <div>
+          Failed to create new game
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 
   render() {
     return (
       <div>
         <button className="start-game-btn" onClick={this.handleStartGameClick}>
-          Start Game
+          Start New Game
         </button>
+        {this.renderStartGameStatus()}
       </div>
     );
   }
@@ -34,18 +55,20 @@ class StartContainer extends Component {
 }
 
 StartContainer.propTypes = {
-  gameStarted: PropTypes.bool.isRequired,
-  startGame: PropTypes.func.isRequired,
+  newGameId: PropTypes.number,
+  startNewGameRequestStatus: PropTypes.string.isRequired,
+  startNewGame: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, params) => {
   return {
-    gameStarted: state.game.gameStarted
+    newGameId: state.game.newGameId,
+    startNewGameRequestStatus: state.game.startNewGameRequestStatus
   };
 };
 
 export default connect(mapStateToProps, {
   push,
-  startGame
+  startNewGame
 })(StartContainer);
