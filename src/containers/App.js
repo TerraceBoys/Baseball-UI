@@ -6,10 +6,10 @@ import Header from '../components/Header';
 class App extends Component {
 
   render() {
-    const {children} = this.props;
+    const {children, gameId} = this.props;
     return (
       <div className="app">
-        <Header />
+        <Header gameId={gameId} />
         <div className="app-body">
           {children}
         </div>
@@ -20,7 +20,14 @@ class App extends Component {
 }
 
 App.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  gameId: PropTypes.string
 };
 
-export default connect()(App);
+const mapStateToProps = (state, {params}) => {
+  return {
+    gameId: params.id
+  };
+};
+
+export default connect(mapStateToProps)(App);

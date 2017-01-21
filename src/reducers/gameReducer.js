@@ -6,7 +6,9 @@ const initialState = {
   startNewGameRequestStatus: requestStatusTypes.UNINITIALIZED,
   gameConfigRequestStatus: requestStatusTypes.UNINITIALIZED,
   gameConfig: new Map(),
-  gameEventStack: new Stack()
+  gameEventStack: new Stack(),
+  gameEventMessage: 'No game events',
+  gameEventRequestStatus: requestStatusTypes.UNINITIALIZED
 };
 
 export default (state = initialState, action) => {
@@ -49,6 +51,25 @@ export default (state = initialState, action) => {
       return {
         ...state,
         gameEventStack: state.gameEventStack.push(action.gameEvent)
+      };
+    case actionTypes.NEW_GAME_EVENT_REQUESTED:
+      return {
+        ...state,
+        gameEventMessage: '',
+        gameEventRequestStatus: requestStatusTypes.PENDING
+      };
+    case actionTypes.NEW_GAME_EVENT_SUCCEEDED:
+      return {
+        ...state,
+        gameEventStack: state.gameEventStack.push(action.gameEvent),
+        gameEventMessage: action.eventSuccess,
+        gameEventRequestStatus: requestStatusTypes.SUCCEEDED
+      };
+    case actionTypes.NEW_GAME_EVENT_FAILED:
+      return {
+        ...state,
+        gameEventMessage: action.eventError,
+        gameEventRequestStatus: requestStatusTypes.FAILED
       };
     default:
       return state;

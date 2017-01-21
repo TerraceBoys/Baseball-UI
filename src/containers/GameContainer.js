@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
 import {push} from 'react-router-redux';
+import requestStatusTypes from '../utils/requestStatusTypes';
 import {
   newStrike,
   newOut,
@@ -10,7 +10,7 @@ import {
   newTriple,
   newHomeRun,
   newSteal,
-  newThrownOut
+  newPick
 } from '../actions/gameActions';
 
 class GameContainer extends Component {
@@ -24,77 +24,97 @@ class GameContainer extends Component {
     this.handleTripleClick = this.handleTripleClick.bind(this);
     this.handleHomeRunClick = this.handleHomeRunClick.bind(this);
     this.handleStealClick = this.handleStealClick.bind(this);
-    this.handleThrownOutClick = this.handleThrownOutClick.bind(this);
+    this.handlePickClick = this.handlePickClick.bind(this);
+    this.renderGameEventMessage = this.renderGameEventMessage.bind(this);
   }
 
   handleStrikeClick() {
-    this.props.newStrike();
+    const {gameId} = this.props;
+    this.props.newStrike(gameId);
   }
 
   handleOutClick() {
-    this.props.newOut();
+    const {gameId} = this.props;
+    this.props.newOut(gameId);
   }
 
   handleSingleClick() {
-    this.props.newSingle();
+    const {gameId} = this.props;
+    this.props.newSingle(gameId);
   }
 
   handleDoubleClick() {
-    this.props.newDouble();
+    const {gameId} = this.props;
+    this.props.newDouble(gameId);
   }
 
   handleTripleClick() {
-    this.props.newTriple();
+    const {gameId} = this.props;
+    this.props.newTriple(gameId);
   }
 
   handleHomeRunClick() {
-    this.props.newHomeRun();
+    const {gameId} = this.props;
+    this.props.newHomeRun(gameId);
   }
 
   handleStealClick() {
-    this.props.newSteal();
+    const {gameId} = this.props;
+    this.props.newSteal(gameId);
   }
 
-  handleThrownOutClick() {
-    this.props.newThrownOut()
+  handlePickClick() {
+    const {gameId} = this.props;
+    this.props.newPick(gameId)
+  }
+
+  renderGameEventMessage() {
+    const {
+      gameEventMessage,
+      gameEventRequestStatus
+    } = this.props;
+    let status = '';
+    if (gameEventRequestStatus === requestStatusTypes.SUCCEEDED) {
+      status = 'success';
+    } else if (gameEventRequestStatus === requestStatusTypes.PENDING) {
+      status = 'pending';
+    } else if (gameEventRequestStatus === requestStatusTypes.FAILED) {
+      status = 'failed';
+    }
+    return (
+      <div className="game-event-status-container">
+        <div className={`game-event-status-circle ${status}`}></div>
+        {gameEventMessage}
+      </div>
+    );
   }
 
   render() {
-    const {gameId} = this.props;
     return (
       <div>
-        <div>
-          <Link to="/start">Exit</Link>
+        {this.renderGameEventMessage()}
+        <div className="grass-container">
+          <div className="content-title">Defense</div>
+          <div className="button-wrapper">
+            <button className="game-event-button" onClick={this.handleStrikeClick}>Strike</button>
+            <button className="game-event-button" onClick={this.handleOutClick}>Out</button>
+          </div>
         </div>
-        <div>
-          <Link to={`/config/${gameId}`}>config</Link>
+        <div className="dirt-container">
+          <div className="content-title">Offense</div>
+          <div className="button-wrapper">
+            <button className="game-event-button" onClick={this.handleSingleClick}>Single</button>
+            <button className="game-event-button" onClick={this.handleDoubleClick}>Double</button>
+            <button className="game-event-button" onClick={this.handleTripleClick}>Triple</button>
+            <button className="game-event-button" onClick={this.handleHomeRunClick}>Home Run</button>
+          </div>
         </div>
-        <div>
-          <Link to={`/actions/${gameId}`}>actions</Link>
-        </div>
-        <div>
-          <button onClick={this.handleStrikeClick}>Strike</button>
-        </div>
-        <div>
-          <button onClick={this.handleOutClick}>Out</button>
-        </div>
-        <div>
-          <button onClick={this.handleSingleClick}>single</button>
-        </div>
-        <div>
-          <button onClick={this.handleDoubleClick}>double</button>
-        </div>
-        <div>
-          <button onClick={this.handleTripleClick}>triple</button>
-        </div>
-        <div>
-          <button onClick={this.handleHomeRunClick}>home run</button>
-        </div>
-        <div>
-          <button onClick={this.handleStealClick}>steal</button>
-        </div>
-        <div>
-          <button onClick={this.handleThrownOutClick}>thrown out</button>
+        <div className="grass-container">
+          <div className="content-title">Base running</div>
+          <div className="button-wrapper">
+            <button className="game-event-button" onClick={this.handleStealClick}>Steal</button>
+            <button className="game-event-button" onClick={this.handlePickClick}>Pick</button>
+          </div>
         </div>
       </div>
     );
@@ -104,6 +124,8 @@ class GameContainer extends Component {
 
 GameContainer.propTypes = {
   gameId: PropTypes.string.isRequired,
+  gameEventMessage: PropTypes.string.isRequired,
+  gameEventRequestStatus: PropTypes.string.isRequired,
   push: PropTypes.func.isRequired,
   newStrike: PropTypes.func.isRequired,
   newOut: PropTypes.func.isRequired,
@@ -114,7 +136,9 @@ GameContainer.propTypes = {
 
 const mapStateToProps = (state, {params}) => {
   return {
-    gameId: params.id
+    gameId: params.id,
+    gameEventMessage: state.game.gameEventMessage,
+    gameEventRequestStatus: state.game.gameEventRequestStatus
   };
 };
 
@@ -127,5 +151,5 @@ export default connect(mapStateToProps, {
   newTriple,
   newHomeRun,
   newSteal,
-  newThrownOut
+  newPick
 })(GameContainer);
