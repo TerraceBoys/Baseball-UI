@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
-import game from './gameReducer';
+import baseball from './baseballReducer';
 
 const rootReducer = combineReducers({
-  game,
+  baseball,
   routing: routerReducer
 });
 

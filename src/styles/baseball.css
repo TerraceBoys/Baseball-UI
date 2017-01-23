@@ -1,0 +1,145 @@
+/* BASEBALL STYLES */
+
+.baseball-container {
+    height: 100%;
+    background-image: url("../images/grass.jpg");
+}
+
+.app-header {
+    background: #9bcca4;
+    background: -webkit-linear-gradient(#909df9, white,  #ffafaf);
+    background: -o-linear-gradient(#909df9, white,  #ffafaf);
+    background: -moz-linear-gradient(#909df9, white,  #ffafaf);
+    background: linear-gradient(#909df9, white,  #ffafaf);
+    border: 1px solid black;
+    box-shadow: 0 1px 5px black;
+    height: 50px;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.mlp-logo {
+    height: 30px;
+    margin: 0 10px 0 5px;
+    display: inline;
+}
+
+.header-title {
+    font-size: 1.5rem;
+}
+
+.header-menu {
+    margin-left: auto;
+    padding-right: 10px;
+}
+
+.header-menu i {
+    color: grey;
+}
+
+.header-menu i:hover, .header-menu i:focus {
+    color: black;
+    cursor: pointer;
+}
+
+.header-menu-drop-down {
+    position: absolute;
+    background: white;
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 100px;
+    right: 5px;
+}
+
+.header-menu-item {
+    display: block;
+    padding: 5px 0;
+    text-align: center;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+.header-menu-item:hover {
+    background: grey;
+    cursor: pointer;
+}
+
+.exit-item {
+    color: red;
+    border-bottom: none;
+}
+
+.game-event-status-container {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    background: white;
+    margin: 15px 7px 5px 7px;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -moz-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -webkit-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -khtml-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+}
+
+.game-event-status-circle {
+    border-radius: 50%;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    border: 2px solid black;
+}
+
+.game-event-status-circle.success {
+    background-color: #28ff3a;
+}
+
+.game-event-status-circle.pending {
+    background-color: #ffb414;
+}
+
+.game-event-status-circle.failed {
+    background-color: #ef0000;
+}
+
+.grass-container {
+    height: 150px;
+}
+
+.dirt-container {
+    background: url("../images/dirt.jpg");
+    box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -moz-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -webkit-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -khtml-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    height: 200px;
+}
+
+.content-title {
+    text-align: left;
+    padding: 5px;
+    font-size: 1.3rem;
+}
+
+.button-wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.game-event-button {
+    padding: 20px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+}

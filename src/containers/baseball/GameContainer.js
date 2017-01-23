@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-import requestStatusTypes from '../utils/requestStatusTypes';
+import requestStatusTypes from '../../utils/requestStatusTypes';
 import {
   newStrike,
   newOut,
@@ -11,7 +11,7 @@ import {
   newHomeRun,
   newSteal,
   newPick
-} from '../actions/gameActions';
+} from '../../actions/gameActions';
 
 class GameContainer extends Component {
 
@@ -137,8 +137,8 @@ GameContainer.propTypes = {
 const mapStateToProps = (state, {params}) => {
   return {
     gameId: params.id,
-    gameEventMessage: state.game.gameEventMessage,
-    gameEventRequestStatus: state.game.gameEventRequestStatus
+    gameEventMessage: state.baseball.gameEventMessage,
+    gameEventRequestStatus: state.baseball.gameEventRequestStatus
   };
 };
 

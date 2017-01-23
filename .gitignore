@@ -12,5 +12,8 @@ coverage
 .env
 npm-debug.log
 
-#IDE
+# IDE
 .idea
+
+# configuration
+config.js

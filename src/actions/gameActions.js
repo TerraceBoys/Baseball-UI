@@ -1,5 +1,6 @@
 import actionTypes from './types';
 import axios from 'axios';
+import API from '../config';
 
 var axiosInstance = axios.create({
   baseURL: API,
@@ -12,12 +13,12 @@ export const startNewGame = () => {
       type: actionTypes.START_NEW_GAME_REQUESTED
     });
     axiosInstance.get('baseball/new-game', {
-        responseType: 'text'
+        responseType: 'json'
       })
       .then(response => {
         dispatch({
           type: actionTypes.START_NEW_GAME_SUCCEEDED,
-          newGameId: response.data.id
+          gameId: response.data.id
         });
       })
       .catch(error => {
@@ -29,8 +30,30 @@ export const startNewGame = () => {
   }
 };
 
+export const joinCurrentGame = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.JOIN_CURRENT_GAME_REQUESTED
+    });
+    axiosInstance.get(`baseball/current/game-state`, {
+        responseType: 'json'
+      })
+      .then(response => {
+        dispatch({
+          type: actionTypes.JOIN_CURRENT_GAME_SUCCEEDED,
+          gameId: response.data.id
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: actionTypes.JOIN_CURRENT_GAME_FAILED,
+          error: error.response
+        });
+      });
+  }
+};
 
-export const getGameConfiguration = (id) => {
+export const getGameConfigurationById = (id) => {
   return (dispatch) => {
     dispatch({
       type: actionTypes.GAME_CONFIG_REQUESTED

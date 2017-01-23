@@ -35,7 +35,7 @@ class GameActionsContainer extends Component {
     const {gameId, gameEventStack} = this.props;
     return (
       <div>
-        <Link to={`/game/${gameId}`}>Back</Link>
+        <Link to={`/baseball/${gameId}`}>Back</Link>
         <p>Most recent events are at the top</p>
         <table>
           <tbody>
@@ -57,7 +57,7 @@ GameActionsContainer.propTypes = {
 const mapStateToProps = (state, {params}) => {
   return {
     gameId: params.id,
-    gameEventStack: state.game.gameEventStack
+    gameEventStack: state.baseball.gameEventStack
   };
 };
 

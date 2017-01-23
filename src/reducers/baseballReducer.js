@@ -3,7 +3,9 @@ import actionTypes from '../actions/types';
 import requestStatusTypes from '../utils/requestStatusTypes';
 
 const initialState = {
+  beginGameId: null,
   startNewGameRequestStatus: requestStatusTypes.UNINITIALIZED,
+  joinCurrentGameRequestStatus: requestStatusTypes.UNINITIALIZED,
   gameConfigRequestStatus: requestStatusTypes.UNINITIALIZED,
   gameConfig: new Map(),
   gameEventStack: new Stack(),
@@ -21,14 +23,29 @@ export default (state = initialState, action) => {
     case actionTypes.START_NEW_GAME_SUCCEEDED:
       return {
         ...state,
-        newGameId: action.newGameId,
+        beginGameId: action.gameId,
         startNewGameRequestStatus: requestStatusTypes.SUCCEEDED
       };
     case actionTypes.START_NEW_GAME_FAILED:
       return {
         ...state,
-        startNewGameError: action.error,
         startNewGameRequestStatus: requestStatusTypes.FAILED
+      };
+    case actionTypes.JOIN_CURRENT_GAME_REQUESTED:
+      return {
+        ...state,
+        joinCurrentGameRequestStatus: requestStatusTypes.PENDING
+      };
+    case actionTypes.JOIN_CURRENT_GAME_SUCCEEDED:
+      return {
+        ...state,
+        beginGameId: action.gameId,
+        joinCurrentGameRequestStatus: requestStatusTypes.SUCCEEDED
+      };
+    case actionTypes.JOIN_CURRENT_GAME_FAILED:
+      return {
+        ...state,
+        joinCurrentGameRequestStatus: requestStatusTypes.FAILED
       };
     case actionTypes.GAME_CONFIG_REQUESTED:
       return {

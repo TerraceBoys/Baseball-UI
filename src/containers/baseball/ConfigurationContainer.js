@@ -2,8 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {push} from 'react-router-redux';
-import requestStatusTypes from '../utils/requestStatusTypes';
-import {getGameConfiguration} from '../actions/gameActions';
+import requestStatusTypes from '../../utils/requestStatusTypes';
+import {getGameConfigurationById} from '../../actions/gameActions';
 
 class ConfigurationContainer extends Component {
 
@@ -15,7 +15,7 @@ class ConfigurationContainer extends Component {
 
   componentWillMount() {
     const {gameId} = this.props;
-    this.props.getGameConfiguration(gameId);
+    this.props.getGameConfigurationById(gameId);
   }
 
   renderGameConfigContent() {
@@ -49,7 +49,7 @@ class ConfigurationContainer extends Component {
     const {gameId} = this.props;
     return (
       <div>
-        <Link to={`/game/${gameId}`}>Back</Link>
+        <Link to={`/baseball/${gameId}`}>Back</Link>
         {this.renderContent()}
       </div>
     );
@@ -60,18 +60,18 @@ class ConfigurationContainer extends Component {
 ConfigurationContainer.propTypes = {
   gameId: PropTypes.string.isRequired,
   push: PropTypes.func.isRequired,
-  getGameConfiguration: PropTypes.func.isRequired,
+  getGameConfigurationById: PropTypes.func.isRequired,
   gameConfigRequestStatus: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, {params}) => {
   return {
     gameId: params.id,
-    gameConfigRequestStatus: state.game.gameConfigRequestStatus
+    gameConfigRequestStatus: state.baseball.gameConfigRequestStatus
   };
 };
 
 export default connect(mapStateToProps, {
   push,
-  getGameConfiguration
+  getGameConfigurationById
 })(ConfigurationContainer);

@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import {syncHistoryWithStore} from 'react-router-redux'
 import configureStore from './utils/configureStore';
 import './styles/index.css';
+import 'font-awesome/css/font-awesome.css'
 import Routes from './Routes';
 
 const store = configureStore();

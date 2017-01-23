@@ -2,19 +2,23 @@ import React from 'react';
 import {Router, Route, IndexRoute} from 'react-router';
 import App from './containers/App';
 import NotFound from './components/NotFound';
-import StartContainer from './containers/StartContainer';
-import GameContainer from './containers/GameContainer';
-import ConfigurationContainer from './containers/ConfigurationContainer';
-import GameActionsContainer from './containers/GameActionsContainer';
+import HomeContainer from './containers/HomeContainer';
+import BaseballContainer from './containers/baseball/BaseballContainer';
+import StartContainer from './containers/baseball/StartContainer';
+import GameContainer from './containers/baseball/GameContainer';
+import ConfigurationContainer from './containers/baseball/ConfigurationContainer';
+import GameActionsContainer from './containers/baseball/GameActionsContainer';
 
 const Routes = (props) => (
   <Router {...props}>
     <Route path="/" component={App}>
-      <IndexRoute component={StartContainer} />
-      <Route path="start" component={StartContainer} />
-      <Route path="game/:id" component={GameContainer} />
-      <Route path="config/:id" component={ConfigurationContainer} />
-      <Route path="actions/:id" component={GameActionsContainer} />
+      <IndexRoute component={HomeContainer} />
+      <Route path="baseball" component={BaseballContainer} >
+        <IndexRoute component={StartContainer} />
+        <Route path=":id" component={GameContainer} />
+        <Route path=":id/config" component={ConfigurationContainer} />
+        <Route path=":id/actions" component={GameActionsContainer} />
+      </Route>
       <Route path="*" component={NotFound} />
     </Route>
   </Router>
