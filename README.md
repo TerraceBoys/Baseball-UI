@@ -1,11 +1,11 @@
-# Baseball UI
+# Terrace Pi UI
 
-UI for the drinking game baseball
+UI to control the raspberry pi
 
-Install baseball UI
+Install
 ```bash
 git clone https://github.com/brandenrodgers/baseball-ui.git
-npm update
+npm install
 ```
 
 ### `npm start`
@@ -27,3 +27,8 @@ Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
+
+### `forever server`
+
+Runs the server in forever mode. use `forever stopall` to stop it. Make sure yourun `npm install` after pulling updated code.
+
