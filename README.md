@@ -4,7 +4,7 @@ UI to control the raspberry pi
 
 Install
 ```bash
-git clone https://github.com/brandenrodgers/baseball-ui.git
+git clone https://github.com/brandenrodgers/TerracePi-UI.git
 npm install
 ```
 
