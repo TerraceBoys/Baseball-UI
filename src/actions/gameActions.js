@@ -1,9 +1,9 @@
 import actionTypes from './types';
 import axios from 'axios';
-import API from '../config';
+import {AWS_API} from '../config';
 
-var axiosInstance = axios.create({
-  baseURL: API,
+let axiosInstance = axios.create({
+  baseURL: AWS_API,
   timeout: 5000
 });
 

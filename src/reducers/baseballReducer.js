@@ -64,11 +64,6 @@ export default (state = initialState, action) => {
         gameConfigError: action.error,
         gameConfigRequestStatus: requestStatusTypes.FAILED
       };
-    case actionTypes.NEW_GAME_EVENT:
-      return {
-        ...state,
-        gameEventStack: state.gameEventStack.push(action.gameEvent)
-      };
     case actionTypes.NEW_GAME_EVENT_REQUESTED:
       return {
         ...state,
