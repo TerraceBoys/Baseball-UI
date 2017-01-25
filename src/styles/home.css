@@ -1,22 +1,24 @@
 .home-container {
     height: 100%;
-    background-image: url("../images/blue-background.jpg");
+    background-image: url("../images/quorra.png");
 }
 
 .home-title {
-    color: white;
+    color: #A8C9D1;
+    letter-spacing: 3px;
     font-size: 1.9rem;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
     background: #9bcca4;
-    background: -webkit-linear-gradient(#808080,  #909df9);
-    background: -o-linear-gradient(#808080,  #909df9);
-    background: -moz-linear-gradient(#808080,  #909df9);
-    background: linear-gradient(#808080,  #909df9);
-    box-shadow: 0 1px 5px black, 0 -1px 5px black;
-    -moz-box-shadow: 0 1px 5px black, 0 -1px 5px black;
-    -webkit-box-shadow: 0 1px 5px black, 0 -1px 5px black;
-    -khtml-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    border-bottom: 1px solid #A8C9D1;
+    background: -webkit-linear-gradient(#011F2D,  #154059);
+    background: -o-linear-gradient(#011F2D,  #154059);
+    background: -moz-linear-gradient(#011F2D, #154059);
+    background: linear-gradient(#011F2D,  #154059);
+    box-shadow: 0 1px 5px #A8C9D1;
+    -moz-box-shadow: 0 1px 5px #A8C9D1;
+    -webkit-box-shadow: 0 1px 5px #A8C9D1;
+    -khtml-box-shadow: 0 1px 5px #A8C9D1;
 }
 
 .home-button-container {
@@ -27,15 +29,25 @@
 }
 
 .home-button {
-    padding: 20px 0;
+    padding: 15px 0;
     display: block;
+    letter-spacing: 2px;
     margin-top: 10px;
     text-align: center;
-    border: 2px solid black;
+    border: 1px solid #808080;
     text-decoration: none;
     color: #FFFFFF;
-    font-size: 1.5rem;
+    font-size: 2rem;
     border-radius: 3px;
+    box-shadow: 0 1px 1px black, 0 -1px 1px black;
+    -moz-box-shadow: 0 1px 1px black, 0 -1px 1px black;
+    -webkit-box-shadow: 0 1px 1px black, 0 -1px 1px black;
+    -khtml-box-shadow: 0 1px 1px black, 0 -1px 1px black;
+}
+
+.home-button:hover {
+    cursor: pointer;
+    letter-spacing: 5px;
     box-shadow: 0 1px 5px black, 0 -1px 5px black;
     -moz-box-shadow: 0 1px 5px black, 0 -1px 5px black;
     -webkit-box-shadow: 0 1px 5px black, 0 -1px 5px black;
@@ -58,6 +70,6 @@
     height: 200px;
     width: 350px;
     text-align: center;
-    background: grey;
+    background: #808080;
     border-radius: 10px;
 }

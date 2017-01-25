@@ -35,7 +35,7 @@ class HomeContainer extends Component {
     return (
       <div className="home-container">
         {this.maybeRenderLoadingScreen()}
-        <div className="home-title">Terrace Pi Home</div>
+        <div className="home-title">Terrace Pi Control</div>
         <div className="home-button-container">
           <div className="home-button launch-mbta-button" onClick={this.props.launchMBTA}>MBTA Times</div>
           <div className="home-button launch-baseball-button" onClick={this.props.launchBaseball}>Baseball</div>

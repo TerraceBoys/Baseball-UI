@@ -6,13 +6,16 @@
 }
 
 .app-header {
-    background: #9bcca4;
-    background: -webkit-linear-gradient(#909df9, white,  #ffafaf);
-    background: -o-linear-gradient(#909df9, white,  #ffafaf);
-    background: -moz-linear-gradient(#909df9, white,  #ffafaf);
-    background: linear-gradient(#909df9, white,  #ffafaf);
+    background: #FFFFFF;
+    background: -webkit-linear-gradient(#3E4095, #FFFFFF,  #ED3237);
+    background: -o-linear-gradient(#3E4095, #FFFFFF,  #ED3237);
+    background: -moz-linear-gradient(#3E4095, #FFFFFF,  #ED3237);
+    background: linear-gradient(#3E4095, #FFFFFF,  #ED3237);
     border: 1px solid black;
     box-shadow: 0 1px 5px black;
+    -moz-box-shadow: 0 1px 5px black;
+    -webkit-box-shadow: 0 1px 5px black;
+    -khtml-box-shadow: 0 1px 5px black;
     height: 50px;
     color: black;
     display: flex;
@@ -35,7 +38,7 @@
 }
 
 .header-menu-icon {
-    color: grey;
+    color: #808080;
 }
 
 .header-menu-icon:hover, .header-menu-icon:focus {
@@ -45,16 +48,15 @@
 
 .header-menu-drop-down {
     position: absolute;
-    background: white;
-    border: 2px solid black;
+    background: #FFFFFF;
+    border: 1px solid black;
     border-radius: 3px;
-    width: 120px;
     right: 5px;
 }
 
 .header-menu-item {
     display: flex;
-    padding: 5px 0;
+    padding: 5px 10px 5px 0;
     text-align: center;
     font-size: 1.2rem;
     text-decoration: none;
@@ -67,7 +69,7 @@
 }
 
 .header-menu-item:hover {
-    background: grey;
+    background: #808080;
     cursor: pointer;
 }
 
