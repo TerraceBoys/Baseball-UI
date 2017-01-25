@@ -1,9 +1,10 @@
 {
-  "main.css": "static/css/main.36c76de5.css",
-  "main.css.map": "static/css/main.36c76de5.css.map",
-  "main.js": "static/js/main.df744287.js",
-  "main.js.map": "static/js/main.df744287.js.map",
+  "main.css": "static/css/main.e7e01f15.css",
+  "main.css.map": "static/css/main.e7e01f15.css.map",
+  "main.js": "static/js/main.aaf870c0.js",
+  "main.js.map": "static/js/main.aaf870c0.js.map",
   "static/media/dirt.jpg": "static/media/dirt.ae314c7d.jpg",
+  "static/media/dusk.png": "static/media/dusk.df61be81.png",
   "static/media/fontawesome-webfont.eot?v=4.7.0": "static/media/fontawesome-webfont.674f50d2.eot",
   "static/media/fontawesome-webfont.svg?v=4.7.0": "static/media/fontawesome-webfont.912ec66d.svg",
   "static/media/fontawesome-webfont.ttf?v=4.7.0": "static/media/fontawesome-webfont.b06871f2.ttf",
@@ -12,6 +13,5 @@
   "static/media/grass.jpg": "static/media/grass.e32ef829.jpg",
   "static/media/grid-paper.jpg": "static/media/grid-paper.c1e5360f.jpg",
   "static/media/mlp.jpg": "static/media/mlp.3fc861ad.jpg",
-  "static/media/quorra.png": "static/media/quorra.a1e43add.png",
   "static/media/train.jpg": "static/media/train.45d7f65d.jpg"
 }

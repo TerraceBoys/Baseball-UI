@@ -1,6 +1,6 @@
 .home-container {
     height: 100%;
-    background-image: url("../images/quorra.png");
+    background-image: url("../images/dusk.png");
 }
 
 .home-title {
@@ -11,10 +11,10 @@
     padding: 10px;
     background: #9bcca4;
     border-bottom: 1px solid #A8C9D1;
-    background: -webkit-linear-gradient(#011F2D,  #154059);
-    background: -o-linear-gradient(#011F2D,  #154059);
-    background: -moz-linear-gradient(#011F2D, #154059);
-    background: linear-gradient(#011F2D,  #154059);
+    background: -webkit-linear-gradient(#8C29BD,  #284496);
+    background: -o-linear-gradient(#8C29BD,  #284496);
+    background: -moz-linear-gradient(#8C29BD,  #284496);
+    background: linear-gradient(#8C29BD,  #284496);
     box-shadow: 0 1px 5px #A8C9D1;
     -moz-box-shadow: 0 1px 5px #A8C9D1;
     -webkit-box-shadow: 0 1px 5px #A8C9D1;
