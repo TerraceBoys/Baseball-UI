@@ -154,3 +154,27 @@
     font-size: 1.3rem;
     border-radius: 5px;
 }
+
+.game-actions-table {
+    background: url("../images/grid-paper.jpg");
+    font-size: 1.3rem;
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+    border: 1px solid #808080
+}
+
+.game-actions-table tr{
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-actions-table tr:not(:last-child) {
+    border-bottom: 1px dashed black;
+}
+
+.game-actions-table tr td {
+    align-self: center;
+    padding: 0 10px;
+}

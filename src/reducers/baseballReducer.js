@@ -8,7 +8,7 @@ const initialState = {
   joinCurrentGameRequestStatus: requestStatusTypes.UNINITIALIZED,
   gameConfigRequestStatus: requestStatusTypes.UNINITIALIZED,
   gameConfig: new Map(),
-  gameEventStack: new Stack(),
+  gameEventStack: new Stack(["strike", 'ball', 'test', 'test']),
   gameEventMessage: 'No game events',
   gameEventRequestStatus: requestStatusTypes.UNINITIALIZED
 };

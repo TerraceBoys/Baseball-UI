@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {Stack} from 'immutable';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
 import {push} from 'react-router-redux';
 
 class GameActionsContainer extends Component {
@@ -18,6 +17,11 @@ class GameActionsContainer extends Component {
       return (
         <tr key={index}>
           <td>{event}</td>
+          {index === gameEventStack.size - 1 ?
+            <td className="undo-action">
+              <i className="fa fa-undo m-right-1" aria-hidden="true" />
+              undo
+            </td> : null}
         </tr>
       );
     });
@@ -32,12 +36,10 @@ class GameActionsContainer extends Component {
   }
 
   render() {
-    const {gameId, gameEventStack} = this.props;
+    const {gameEventStack} = this.props;
     return (
-      <div>
-        <Link to={`/baseball/${gameId}`}>Back</Link>
-        <p>Most recent events are at the top</p>
-        <table>
+      <div className="m-top-3">
+        <table className="game-actions-table">
           <tbody>
             {gameEventStack.size ? this.renderGameEvents() : this.renderNoActionsMessage()}
           </tbody>
