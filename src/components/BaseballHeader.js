@@ -13,7 +13,6 @@ class Header extends Component {
     this.handleMenuClick = this.handleMenuClick.bind(this);
     this.handleMenuItemClick = this.handleMenuItemClick.bind(this);
     this.renderMenuItems = this.renderMenuItems.bind(this);
-    this.handleExitClick = this.handleExitClick.bind(this);
   }
 
   componentDidMount() {
@@ -40,20 +39,24 @@ class Header extends Component {
     this.setState({expanded: false});
   }
 
-  handleExitClick() {
-    this.props.launchDefaultDisplay();
-  }
-
   renderMenuItems() {
     const {expanded} = this.state;
     const {gameId} = this.props;
     if (expanded) {
       return (
         <div className="header-menu-drop-down">
-          {gameId ? <Link className="header-menu-item" to={`/baseball/${gameId}`} onClick={this.handleMenuItemClick}>Game</Link> : null}
-          {gameId ? <Link className="header-menu-item" to={`/baseball/${gameId}/actions`} onClick={this.handleMenuItemClick}>Actions</Link> : null}
-          {gameId ? <Link className="header-menu-item" to={`/baseball/${gameId}/config`} onClick={this.handleMenuItemClick}>Config</Link> : null}
-          <Link className="header-menu-item exit-item" to="/" onClick={this.handleExitClick}>Exit</Link>
+          {gameId ? <Link className="header-menu-item" to={`/baseball/${gameId}`} onClick={this.handleMenuItemClick}>
+            <i className="fa fa-beer" aria-hidden="true" />
+            Game
+          </Link> : null}
+          {gameId ? <Link className="header-menu-item" to={`/baseball/${gameId}/actions`} onClick={this.handleMenuItemClick}>
+            <i className="fa fa-cog" aria-hidden="true" />
+            Actions
+          </Link> : null}
+          <Link className="header-menu-item exit-item" to="/">
+            <i className="fa fa-sign-out" aria-hidden="true" />
+            Exit
+          </Link>
         </div>
       );
     }
@@ -66,7 +69,7 @@ class Header extends Component {
         <img className="mlp-logo" src={mlpIcon} alt="MLP" />
         <div className="header-title">Baseball</div>
         <div className="header-menu">
-          <i className="fa fa-bars fa-2x" aria-hidden="true" onClick={this.handleMenuClick} />
+          <i className="fa fa-bars fa-2x header-menu-icon" aria-hidden="true" onClick={this.handleMenuClick} />
           {this.renderMenuItems()}
         </div>
       </div>
@@ -76,7 +79,6 @@ class Header extends Component {
 
 Header.propTypes = {
   gameId: PropTypes.string,
-  launchDefaultDisplay: PropTypes.func.isRequired
 };
 
 export default Header;

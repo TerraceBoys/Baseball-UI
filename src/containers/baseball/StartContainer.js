@@ -30,12 +30,12 @@ class StartContainer extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleStartNewGameClick}>
+      <div className="start-page-button-wrapper">
+        <button className="start-page-button" onClick={this.handleStartNewGameClick}>
           Start New Game
         </button>
-        <button onClick={this.handleJoinCurrentGameClick}>
-          Join current Game
+        <button className="start-page-button" onClick={this.handleJoinCurrentGameClick}>
+          Join Current Game
         </button>
       </div>
     );

@@ -6,7 +6,6 @@ import HomeContainer from './containers/HomeContainer';
 import BaseballContainer from './containers/baseball/BaseballContainer';
 import StartContainer from './containers/baseball/StartContainer';
 import GameContainer from './containers/baseball/GameContainer';
-import ConfigurationContainer from './containers/baseball/ConfigurationContainer';
 import GameActionsContainer from './containers/baseball/GameActionsContainer';
 
 const Routes = (props) => (
@@ -16,7 +15,6 @@ const Routes = (props) => (
       <Route path="baseball" component={BaseballContainer} >
         <IndexRoute component={StartContainer} />
         <Route path=":id" component={GameContainer} />
-        <Route path=":id/config" component={ConfigurationContainer} />
         <Route path=":id/actions" component={GameActionsContainer} />
       </Route>
       <Route path="*" component={NotFound} />

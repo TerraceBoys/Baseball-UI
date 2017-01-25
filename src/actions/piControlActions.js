@@ -6,15 +6,40 @@ let axiosInstance = axios.create({
   baseURL: PI_API
 });
 
-
 export const launchBaseball = () => {
   return (dispatch) => {
-    axiosInstance.get('/baseball');
+    dispatch({
+      type: actionTypes.LAUNCH_BASEBALL_REQUESTED
+    });
+    axiosInstance.get('/baseball')
+      .then(() => {
+        dispatch({
+          type: actionTypes.LAUNCH_BASEBALL_SUCCEEDED
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: actionTypes.LAUNCH_BASEBALL_FAILED
+        });
+      });
   }
 };
 
-export const launchDefaultDisplay = () => {
+export const launchMBTA = () => {
   return (dispatch) => {
-    axiosInstance.get('/mbta');
+    dispatch({
+      type: actionTypes.LAUNCH_MBTA_REQUESTED
+    });
+    axiosInstance.get('/mbta')
+      .then(() => {
+        dispatch({
+          type: actionTypes.LAUNCH_MBTA_SUCCEEDED
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: actionTypes.LAUNCH_MBTA_FAILED
+        });
+      });
   }
 };

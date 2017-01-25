@@ -1,0 +1,63 @@
+.home-container {
+    height: 100%;
+    background-image: url("../images/blue-background.jpg");
+}
+
+.home-title {
+    color: white;
+    font-size: 1.9rem;
+    text-align: center;
+    padding: 5px;
+    background: #9bcca4;
+    background: -webkit-linear-gradient(#808080,  #909df9);
+    background: -o-linear-gradient(#808080,  #909df9);
+    background: -moz-linear-gradient(#808080,  #909df9);
+    background: linear-gradient(#808080,  #909df9);
+    box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -moz-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -webkit-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -khtml-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+}
+
+.home-button-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 40px auto 0 auto;
+}
+
+.home-button {
+    padding: 20px 0;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    border: 2px solid black;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -moz-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -webkit-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+    -khtml-box-shadow: 0 1px 5px black, 0 -1px 5px black;
+}
+
+.launch-baseball-button {
+    background-image: url("../images/grass.jpg");
+}
+
+.launch-mbta-button {
+    background: url("../images/train.jpg") repeat 50px 150px;
+}
+
+.home-loading-popup {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 200px;
+    width: 350px;
+    text-align: center;
+    background: grey;
+    border-radius: 10px;
+}
