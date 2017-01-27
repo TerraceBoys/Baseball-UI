@@ -1,0 +1,17 @@
+
+.person-picker-container {
+    background: url('../images/question_marks.jpg');
+    height: 100%;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.person-list {
+    width: 50%;
+    align-self: center;
+    background: white;
+}

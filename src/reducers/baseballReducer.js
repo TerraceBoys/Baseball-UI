@@ -24,6 +24,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         beginGameId: action.gameId,
+        gameEventStack: new Stack(),
         startNewGameRequestStatus: requestStatusTypes.SUCCEEDED
       };
     case actionTypes.START_NEW_BASEBALL_FAILED:

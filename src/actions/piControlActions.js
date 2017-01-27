@@ -43,3 +43,11 @@ export const launchMBTA = () => {
       });
   }
 };
+
+export const launchPersonPicker = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.LAUNCH_PERSON_PICKER_REQUESTED
+    });
+  }
+};

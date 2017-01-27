@@ -79,12 +79,18 @@
 }
 
 .start-page-button-wrapper {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .start-page-button {
-    padding: 20px;
-    margin: 20px;
+    margin-top: 30px;
+    padding: 30px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    background: #ED3237;
+    border: 2px solid #3E4095;
 }
 
 .game-event-status-container {
@@ -123,7 +129,7 @@
 }
 
 .grass-container {
-    height: 150px;
+    height: 200px;
 }
 
 .dirt-container {
@@ -134,13 +140,15 @@
     -khtml-box-shadow: 0 1px 5px black, 0 -1px 5px black;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    height: 200px;
+    height: 230px;
 }
 
 .content-title {
     text-align: left;
     padding: 5px;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .button-wrapper {
@@ -150,9 +158,29 @@
 }
 
 .game-event-button {
-    padding: 20px;
+    padding: 30px;
     font-size: 1.3rem;
     border-radius: 5px;
+    background: #ED3237;
+    border: 2px solid #3E4095;
+}
+
+.base-button {
+    background: url("../images/base.png") no-repeat;
+    background-size: 100%;
+    text-align: center;
+    font-size: 2rem;
+    height: 120px;
+    width: 120px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.base-button:hover {
+    cursor: pointer;
+    color: #3E4095;
 }
 
 .game-actions-table {

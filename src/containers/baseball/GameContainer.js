@@ -96,24 +96,32 @@ class GameContainer extends Component {
         <div className="grass-container">
           <div className="content-title">Defense</div>
           <div className="button-wrapper">
-            <button className="game-event-button" onClick={this.handleStrikeClick}>Strike</button>
-            <button className="game-event-button" onClick={this.handleOutClick}>Out</button>
+            <button className="game-event-button button-bad" onClick={this.handleStrikeClick}>Strike</button>
+            <button className="game-event-button button-bad" onClick={this.handleOutClick}>Out</button>
           </div>
         </div>
         <div className="dirt-container">
           <div className="content-title">Offense</div>
           <div className="button-wrapper">
-            <button className="game-event-button" onClick={this.handleSingleClick}>Single</button>
-            <button className="game-event-button" onClick={this.handleDoubleClick}>Double</button>
-            <button className="game-event-button" onClick={this.handleTripleClick}>Triple</button>
-            <button className="game-event-button" onClick={this.handleHomeRunClick}>Home Run</button>
+            <div className="base-button" onClick={this.handleSingleClick}>
+              <span>Single</span>
+            </div>
+            <div className="base-button" onClick={this.handleDoubleClick}>
+              <span>Double</span>
+            </div>
+            <div className="base-button" onClick={this.handleTripleClick}>
+              <span>Triple</span>
+            </div>
+            <div className="base-button" onClick={this.handleHomeRunClick}>
+              <span>Home Run</span>
+            </div>
           </div>
         </div>
         <div className="grass-container">
           <div className="content-title">Base running</div>
           <div className="button-wrapper">
-            <button className="game-event-button" onClick={this.handleStealClick}>Steal</button>
-            <button className="game-event-button" onClick={this.handlePickClick}>Pick</button>
+            <button className="game-event-button button-good" onClick={this.handleStealClick}>Steal</button>
+            <button className="game-event-button button-bad" onClick={this.handlePickClick}>Pick</button>
           </div>
         </div>
       </div>
