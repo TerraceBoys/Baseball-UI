@@ -4,6 +4,13 @@
     height: 100%;
 }
 
+.back-button {
+    margin: 20px;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 1.1rem;
+}
+
 .content-wrapper {
     display: flex;
     flex-direction: column;
@@ -21,14 +28,47 @@
 .add-person-button {
     height: 36px;
     width: 36px;
+    background: #00b33c;
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
     border: none;
 }
 
-.person-list {
-    width: 50%;
-    align-self: center;
-    background: white;
+.pick-button {
+    width: 200px;
+    padding: 10px;
+    font-size: 1.2rem;
+    margin: 20px auto 0 auto;
 }
 
+.person-table {
+    margin: 20px auto;
+    width: 40%;
+    min-width: 300px;
+    background: white;
+    font-size: 1.3rem;
+    border-radius: 5px;
+}
+
+.person-table tr {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.person-table tr:not(:last-child) {
+    border-bottom: 1px dashed black;
+}
+
+.person-table tr td:not(:last-child) {
+    align-self: center;
+    margin-right: 10px;
+}
+
+.person-table td i {
+    color: red;
+}
+
+.person-table td i:hover {
+    cursor: pointer;
+}

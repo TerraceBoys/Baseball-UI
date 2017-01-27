@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import './../../styles/personPicker.css';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
+import {pickPerson} from '../../actions/personPickerActions';
 
 class PersonPickerContainer extends Component {
 
@@ -12,14 +13,19 @@ class PersonPickerContainer extends Component {
       personList: []
     };
     this.renderPersonList = this.renderPersonList.bind(this);
-    this.renderPersonListItem = this.renderPersonListItem.bind(this);
     this.handleAddPerson = this.handleAddPerson.bind(this);
     this.handlePersonChange = this.handlePersonChange.bind(this);
     this.handleBackClick = this.handleBackClick.bind(this);
+    this.handlePickClick = this.handlePickClick.bind(this);
   }
 
   handleBackClick() {
     this.props.push('/');
+  }
+
+  handlePickClick() {
+    const {personList} = this.state;
+    this.props.pickPerson(personList);
   }
 
   handleAddPerson() {
@@ -31,33 +37,34 @@ class PersonPickerContainer extends Component {
   }
 
   handlePersonChange(evt) {
-    this.setState({currentInput: evt.target.value});
-  }
-
-  renderPersonListItem(person, index) {
-    const {personList} = this.state;
-    return (
-      <li key={index}>
-        {person}
-        <span onClick={() => {personList.splice(index, 1); this.setState({personList: personList})}}>-</span>
-      </li>
-    );
+    if (evt.target.value !== ' ') {
+      this.setState({currentInput: evt.target.value});
+    }
   }
 
   renderPersonList() {
     const {personList} = this.state;
-    return (
-      <ul className="person-list">
-        {personList.map((person, index) => this.renderPersonListItem(person, index))}
-      </ul>
-    );
+    return personList.map((person, index) => {
+      return (
+        <tr key={index}>
+          <td>{person}</td>
+          <td>
+            <i
+              className="fa fa-minus fa-2x"
+              onClick={() => {personList.splice(index, 1); this.setState({personList: personList})}}
+              aria-hidden="true"
+            />
+          </td>
+        </tr>
+      );
+    });
   }
 
   render() {
-    const {currentInput} = this.state;
+    const {currentInput, personList} = this.state;
     return (
       <div className="person-picker-container">
-        <button onClick={this.handleBackClick}>Back</button>
+        <button className="back-button" onClick={this.handleBackClick}>Back</button>
         <div className="content-wrapper">
           <div>
             <input type="text" className="add-person-input" value={currentInput} onChange={this.handlePersonChange} />
@@ -65,7 +72,13 @@ class PersonPickerContainer extends Component {
               <i className="fa fa-plus fa-2x" aria-hidden="true" />
             </button>
           </div>
-          {this.renderPersonList()}
+          {personList.length > 0 ? <button className="pick-button" onClick={this.handlePickClick}>Pick A Person</button> : null}
+          {personList.length > 0 ?
+            <table className="person-table">
+              <tbody>
+                {this.renderPersonList()}
+              </tbody>
+            </table> : null}
         </div>
       </div>
     );
@@ -74,7 +87,8 @@ class PersonPickerContainer extends Component {
 }
 
 PersonPickerContainer.propTypes = {
-  push: PropTypes.func.isRequired
+  push: PropTypes.func.isRequired,
+  pickPerson: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, params) => {
@@ -82,5 +96,6 @@ const mapStateToProps = (state, params) => {
 };
 
 export default connect(mapStateToProps, {
-  push
+  push,
+  pickPerson
 })(PersonPickerContainer);
