@@ -11,7 +11,7 @@ import {
   newHomeRun,
   newSteal,
   newPick
-} from '../../actions/gameActions';
+} from '../../actions/baseballActions';
 
 class GameContainer extends Component {
 

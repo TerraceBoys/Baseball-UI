@@ -1,9 +1,9 @@
 import actionTypes from './types';
 import axios from 'axios';
-import {AWS_API} from '../config';
+import {AWS_BASEBALL_API} from '../config';
 
-let axiosInstance = axios.create({
-  baseURL: AWS_API,
+const axiosInstance = axios.create({
+  baseURL: AWS_BASEBALL_API,
   timeout: 5000
 });
 

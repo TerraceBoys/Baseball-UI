@@ -28,7 +28,7 @@ class HomeContainer extends Component {
     const {launchBaseballRequestStatus} = this.props;
     if (launchBaseballRequestStatus === requestStatusTypes.PENDING) {
       return (
-        <div className="home-loading-popup">
+        <div className="baseball-loading-popup">
           <i className="fa fa-spinner fa-3x rotating m-top-3" aria-hidden="true" />
           <div className="m-top-3">Loading Baseball...</div>
         </div>

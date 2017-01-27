@@ -60,8 +60,10 @@ class PersonPickerContainer extends Component {
         <button onClick={this.handleBackClick}>Back</button>
         <div className="content-wrapper">
           <div>
-            <input type="text" value={currentInput} onChange={this.handlePersonChange} />
-            <button onClick={this.handleAddPerson}>+</button>
+            <input type="text" className="add-person-input" value={currentInput} onChange={this.handlePersonChange} />
+            <button className="add-person-button" onClick={this.handleAddPerson}>
+              <i className="fa fa-plus fa-2x" aria-hidden="true" />
+            </button>
           </div>
           {this.renderPersonList()}
         </div>

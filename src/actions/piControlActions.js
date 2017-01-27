@@ -1,9 +1,13 @@
 import actionTypes from './types';
 import axios from 'axios';
-import {PI_API} from '../config';
+import {AWS_BASEBALL_API, AWS_MBTA_API} from '../config';
 
-let axiosInstance = axios.create({
-  baseURL: PI_API
+const axiosBaseballInstance = axios.create({
+  baseURL: AWS_BASEBALL_API
+});
+
+const axiosMBTAInstance = axios.create({
+  baseURL: AWS_MBTA_API
 });
 
 export const launchBaseball = () => {
@@ -11,7 +15,7 @@ export const launchBaseball = () => {
     dispatch({
       type: actionTypes.LAUNCH_BASEBALL_REQUESTED
     });
-    axiosInstance.get('/baseball')
+    axiosBaseballInstance.get('/baseball')
       .then(() => {
         dispatch({
           type: actionTypes.LAUNCH_BASEBALL_SUCCEEDED
@@ -30,7 +34,7 @@ export const launchMBTA = () => {
     dispatch({
       type: actionTypes.LAUNCH_MBTA_REQUESTED
     });
-    axiosInstance.get('/mbta')
+    axiosMBTAInstance.get('/mbta')
       .then(() => {
         dispatch({
           type: actionTypes.LAUNCH_MBTA_SUCCEEDED

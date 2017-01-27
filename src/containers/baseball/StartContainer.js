@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
 import requestStatusTypes from '../../utils/requestStatusTypes';
-import {startNewGame, joinCurrentGame} from '../../actions/gameActions';
+import {startNewGame, joinCurrentGame} from '../../actions/baseballActions';
 
 class StartContainer extends Component {
 

@@ -67,14 +67,16 @@
     background-image: url("../images/question_marks.jpg");
 }
 
-.home-loading-popup {
+.baseball-loading-popup {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 40%;
     transform: translate(-50%,-50%);
     height: 200px;
     width: 350px;
+    font-size: 1.5rem;
     text-align: center;
-    background: #808080;
+    background: #3E4095;
+    border: 8px solid #ED3237;
     border-radius: 10px;
 }
