@@ -76,7 +76,7 @@ export const getGameConfigurationById = (id) => {
   }
 };
 
-const gameAction = (endpoint, event, messages) => {
+const gameAction = (endpoint, event, undoMethod, messages) => {
   return (dispatch) => {
     dispatch({
       type: actionTypes.NEW_BASEBALL_EVENT_REQUESTED
@@ -88,7 +88,8 @@ const gameAction = (endpoint, event, messages) => {
         dispatch({
           type: actionTypes.NEW_BASEBALL_EVENT_SUCCEEDED,
           eventSuccess: messages.success,
-          gameEvent: event
+          gameEvent: event,
+          undoMethod
         });
       })
       .catch(() => {
@@ -103,10 +104,9 @@ const gameAction = (endpoint, event, messages) => {
 export const newStrike = (gameId) => {
   const messages = {
     success: 'Strike thrown',
-    pending: 'Requesting Strike',
     error: 'Strike failed'
   };
-  return gameAction(`/baseball/${gameId}/strike`, 'Strike', messages);
+  return gameAction(`/baseball/${gameId}/strike`, 'Strike', 'undoStrike', messages);
 };
 
 export const newOut = (gameId) => {
@@ -114,7 +114,7 @@ export const newOut = (gameId) => {
     success: 'Batter Out',
     error: 'Out failed'
   };
-  return gameAction(`/baseball/${gameId}/out`, 'Out', messages);
+  return gameAction(`/baseball/${gameId}/out`, 'Out', 'undoOut', messages);
 };
 
 export const newSingle = (gameId) => {
@@ -122,7 +122,7 @@ export const newSingle = (gameId) => {
     success: 'Single hit',
     error: 'Single failed'
   };
-  return gameAction(`/baseball/${gameId}/hit/1`, 'Single', messages);
+  return gameAction(`/baseball/${gameId}/hit/1`, 'Single', 'undoSingle', messages);
 };
 
 export const newDouble = (gameId) => {
@@ -130,7 +130,7 @@ export const newDouble = (gameId) => {
     success: 'Double hit',
     error: 'Double failed'
   };
-  return gameAction(`/baseball/${gameId}/hit/2`, 'Double', messages);
+  return gameAction(`/baseball/${gameId}/hit/2`, 'Double', 'undoDouble', messages);
 };
 
 export const newTriple = (gameId) => {
@@ -138,7 +138,7 @@ export const newTriple = (gameId) => {
     success: 'Triple hit',
     error: 'Triple failed'
   };
-  return gameAction(`/baseball/${gameId}/hit/3`, 'Triple', messages);
+  return gameAction(`/baseball/${gameId}/hit/3`, 'Triple', 'undoTriple', messages);
 };
 
 export const newHomeRun = (gameId) => {
@@ -146,7 +146,7 @@ export const newHomeRun = (gameId) => {
     success: 'Home run hit',
     error: 'Home Run failed'
   };
-  return gameAction(`/baseball/${gameId}/hit/4`, 'Home Run', messages);
+  return gameAction(`/baseball/${gameId}/hit/4`, 'Home Run', 'undoHomeRun', messages);
 };
 
 export const newSteal = (gameId) => {
@@ -154,7 +154,7 @@ export const newSteal = (gameId) => {
     success: 'Base stolen',
     error: 'Steal failed'
   };
-  return gameAction(`/baseball/${gameId}/steal`, 'Steal', messages);
+  return gameAction(`/baseball/${gameId}/steal`, 'Steal', 'undoSteal', messages);
 };
 
 export const newPick = (gameId) => {
@@ -162,5 +162,13 @@ export const newPick = (gameId) => {
     success: 'Runner picked',
     error: 'Pick failed'
   };
-  return gameAction(`/baseball/${gameId}/pick`, 'Pick', messages);
+  return gameAction(`/baseball/${gameId}/pick`, 'Pick', 'undoPick',  messages);
+};
+
+export const undoStrike = () => {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.UNDO_STRIKE
+    })
+  }
 };

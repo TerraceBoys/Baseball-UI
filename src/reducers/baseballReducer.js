@@ -8,7 +8,7 @@ const initialState = {
   joinCurrentGameRequestStatus: requestStatusTypes.UNINITIALIZED,
   gameConfigRequestStatus: requestStatusTypes.UNINITIALIZED,
   gameConfig: new Map(),
-  gameEventStack: new Stack(),
+  gameEventStack: new Stack([{name: "strike", undoMethod: 'undoStrike'}, {name: "home run"}, {name: "triple"}, {name: "steal"}]),
   gameEventMessage: 'No game events',
   gameEventRequestStatus: requestStatusTypes.UNINITIALIZED
 };
@@ -74,7 +74,7 @@ export default (state = initialState, action) => {
     case actionTypes.NEW_BASEBALL_EVENT_SUCCEEDED:
       return {
         ...state,
-        gameEventStack: state.gameEventStack.push(action.gameEvent),
+        gameEventStack: state.gameEventStack.push({name: action.gameEvent, undoMethod: action.undoMethod}),
         gameEventMessage: action.eventSuccess,
         gameEventRequestStatus: requestStatusTypes.SUCCEEDED
       };
