@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import './../../styles/personPicker.css';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
+import SimpleHeader from '../../components/SimpleHeader';
 import {pickPerson} from '../../actions/personPickerActions';
 
 class PersonPickerContainer extends Component {
@@ -62,9 +63,10 @@ class PersonPickerContainer extends Component {
 
   render() {
     const {currentInput, personList} = this.state;
+    const {push} = this.props;
     return (
       <div className="person-picker-container">
-        <button className="back-button" onClick={this.handleBackClick}>Back</button>
+        <SimpleHeader headerClass="person-picker-header" headerText="Person Picker" push={push} />
         <div className="content-wrapper">
           <div>
             <input type="text" className="add-person-input" value={currentInput} onChange={this.handlePersonChange} />

@@ -4,17 +4,24 @@
     height: 100%;
 }
 
-.back-button {
-    margin: 20px;
-    padding: 5px;
-    border-radius: 3px;
-    font-size: 1.1rem;
+.person-picker-header {
+    color: #FFF;
+    border-bottom: 1px solid #000;
+    background: -webkit-linear-gradient(#000,  #700300);
+    background: -o-linear-gradient(#000,  #700300);
+    background: -moz-linear-gradient(#000,  #700300);
+    background: linear-gradient(#000,  #700300);
+    box-shadow: 0 1px 5px #000;
+    -moz-box-shadow: 0 1px 5px #000;
+    -webkit-box-shadow: 0 1px 5px #000;
+    -khtml-box-shadow: 0 1px 5px #000;
 }
 
 .content-wrapper {
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin-top: 20px;
 }
 
 .add-person-input {

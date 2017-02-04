@@ -8,6 +8,7 @@ import StartContainer from './containers/baseball/StartContainer';
 import GameContainer from './containers/baseball/GameContainer';
 import GameActionsContainer from './containers/baseball/GameActionsContainer';
 import PersonPickerContainer from './containers/personPicker/PersonPickerContainer';
+import BeerBoysContainer from './containers/beerBoys/BeerBoysContainer';
 
 const Routes = (props) => (
   <Router {...props}>
@@ -19,6 +20,7 @@ const Routes = (props) => (
         <Route path=":id/actions" component={GameActionsContainer} />
       </Route>
       <Route path="person-picker" component={PersonPickerContainer} />
+      <Route path="beer-boys" component={BeerBoysContainer} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>

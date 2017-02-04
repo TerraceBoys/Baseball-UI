@@ -11,6 +11,7 @@ class HomeContainer extends Component {
     super(props);
     this.maybeRenderLoadingScreen = this.maybeRenderLoadingScreen.bind(this);
     this.handlePersonPickerClick = this.handlePersonPickerClick.bind(this);
+    this.handleBeerBoysClick = this.handleBeerBoysClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,6 +23,10 @@ class HomeContainer extends Component {
 
   handlePersonPickerClick() {
     this.props.push('/person-picker');
+  }
+
+  handleBeerBoysClick() {
+    this.props.push('/beer-boys');
   }
 
   maybeRenderLoadingScreen() {
@@ -42,9 +47,10 @@ class HomeContainer extends Component {
         {this.maybeRenderLoadingScreen()}
         <div className="home-title">Terrace Pi Control</div>
         <div className="home-button-container">
-          <div className="home-button launch-mbta-button" onClick={this.props.launchMBTA}>MBTA Times</div>
-          <div className="home-button launch-baseball-button" onClick={this.props.launchBaseball}>Baseball</div>
-          <div className="home-button launch-people-button" onClick={this.handlePersonPickerClick}>Person Picker</div>
+          <div className="home-app-button launch-mbta-button" onClick={this.props.launchMBTA}>MBTA Times</div>
+          <div className="home-app-button launch-baseball-button" onClick={this.props.launchBaseball}>Baseball</div>
+          <div className="home-app-button launch-people-button" onClick={this.handlePersonPickerClick}>Person Picker</div>
+          <div className="home-app-button launch-beer-boys-button" onClick={this.handleBeerBoysClick}>Beer Boys</div>
         </div>
       </div>
     );

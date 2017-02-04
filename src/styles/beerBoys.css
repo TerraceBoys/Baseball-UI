@@ -1,0 +1,19 @@
+
+.beer-boys-container {
+    background: url('../images/beer.jpg');
+    background-size: 50px;
+    height: 100%;
+}
+
+.beer-boys-header {
+    color: #000;
+    border-bottom: 1px solid #000;
+    background: -webkit-linear-gradient(#FFF,  #FFCA41);
+    background: -o-linear-gradient(#FFF,  #FFCA41);
+    background: -moz-linear-gradient(#FFF,  #FFCA41);
+    background: linear-gradient(#FFF,  #FFCA41);
+    box-shadow: 0 1px 5px #000;
+    -moz-box-shadow: 0 1px 5px #000;
+    -webkit-box-shadow: 0 1px 5px #000;
+    -khtml-box-shadow: 0 1px 5px #000;
+}
