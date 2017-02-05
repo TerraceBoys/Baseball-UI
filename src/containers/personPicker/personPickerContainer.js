@@ -74,7 +74,7 @@ class PersonPickerContainer extends Component {
               <i className="fa fa-plus fa-2x" aria-hidden="true" />
             </button>
           </div>
-          {personList.length > 0 ? <button className="pick-button" onClick={this.handlePickClick}>Pick A Person</button> : null}
+          {personList.length > 1 ? <button className="pick-button" onClick={this.handlePickClick}>Pick A Person</button> : null}
           {personList.length > 0 ?
             <table className="person-table">
               <tbody>

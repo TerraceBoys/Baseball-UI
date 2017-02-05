@@ -6,15 +6,12 @@ import SimpleHeader from '../../components/SimpleHeader';
 
 class BeerBoysContainer extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const {push} = this.props;
+    const {children, push} = this.props;
     return (
       <div className="beer-boys-container">
         <SimpleHeader headerClass="beer-boys-header" headerText="Beer Boys" push={push} />
+        {children}
       </div>
     );
   }
@@ -22,6 +19,7 @@ class BeerBoysContainer extends Component {
 }
 
 BeerBoysContainer.propTypes = {
+  children: PropTypes.node.isRequired,
   push: PropTypes.func.isRequired
 };
 
