@@ -53,5 +53,16 @@ export const launchPersonPicker = () => {
     dispatch({
       type: actionTypes.LAUNCH_PERSON_PICKER_REQUESTED
     });
+    axiosMBTAInstance.get('/person-picker')
+      .then(() => {
+        dispatch({
+          type: actionTypes.LAUNCH_PERSON_PICKER_SUCCEEDED
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: actionTypes.LAUNCH_PERSON_PICKER_FAILED
+        });
+      });
   }
 };

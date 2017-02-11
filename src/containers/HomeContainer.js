@@ -10,7 +10,6 @@ class HomeContainer extends Component {
   constructor(props) {
     super(props);
     this.maybeRenderLoadingScreen = this.maybeRenderLoadingScreen.bind(this);
-    this.handlePersonPickerClick = this.handlePersonPickerClick.bind(this);
     this.handleBeerBoysClick = this.handleBeerBoysClick.bind(this);
   }
 
@@ -19,10 +18,10 @@ class HomeContainer extends Component {
       nextProps.launchBaseballRequestStatus === requestStatusTypes.SUCCEEDED) {
       this.props.push('/baseball');
     }
-  }
-
-  handlePersonPickerClick() {
-    this.props.push('/person-picker');
+    if (this.props.launchPersonPickerRequestStatus === requestStatusTypes.PENDING &&
+      nextProps.launchPersonPickerRequestStatus === requestStatusTypes.SUCCEEDED) {
+      this.props.push('/person-picker');
+    }
   }
 
   handleBeerBoysClick() {
@@ -49,7 +48,7 @@ class HomeContainer extends Component {
         <div className="home-button-container">
           <div className="home-app-button launch-mbta-button" onClick={this.props.launchMBTA}>MBTA Times</div>
           <div className="home-app-button launch-baseball-button" onClick={this.props.launchBaseball}>Baseball</div>
-          <div className="home-app-button launch-people-button" onClick={this.handlePersonPickerClick}>Person Picker</div>
+          <div className="home-app-button launch-people-button" onClick={this.props.launchPersonPicker}>Person Picker</div>
           <div className="home-app-button launch-beer-boys-button" onClick={this.handleBeerBoysClick}>Beer Boys</div>
         </div>
       </div>
@@ -62,13 +61,15 @@ HomeContainer.propTypes = {
   push: PropTypes.func.isRequired,
   launchBaseball: PropTypes.func.isRequired,
   launchMBTA: PropTypes.func.isRequired,
+  launchBaseballRequestStatus: PropTypes.string.isRequired,
   launchPersonPicker: PropTypes.func.isRequired,
-  launchBaseballRequestStatus: PropTypes.string.isRequired
+  launchPersonPickerRequestStatus: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, {params}) => {
   return {
-    launchBaseballRequestStatus: state.piControl.launchBaseballRequestStatus
+    launchBaseballRequestStatus: state.piControl.launchBaseballRequestStatus,
+    launchPersonPickerRequestStatus: state.piControl.launchPersonPickerRequestStatus
   };
 };
 

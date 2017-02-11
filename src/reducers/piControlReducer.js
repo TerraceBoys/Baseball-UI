@@ -3,7 +3,8 @@ import requestStatusTypes from '../utils/requestStatusTypes';
 
 const initialState = {
   launchMBTARequestStatus: requestStatusTypes.UNINITIALIZED,
-  launchBaseballRequestStatus: requestStatusTypes.UNINITIALIZED
+  launchBaseballRequestStatus: requestStatusTypes.UNINITIALIZED,
+  launchPersonPickerRequestStatus: requestStatusTypes.UNINITIALIZED
 };
 
 export default (state = initialState, action) => {
@@ -37,6 +38,21 @@ export default (state = initialState, action) => {
       return {
         ...state,
         launchBaseballRequestStatus: requestStatusTypes.FAILED
+      };
+    case actionTypes.LAUNCH_PERSON_PICKER_REQUESTED:
+      return {
+        ...state,
+        launchPersonPickerRequestStatus: requestStatusTypes.PENDING
+      };
+    case actionTypes.LAUNCH_PERSON_PICKER_SUCCEEDED:
+      return {
+        ...state,
+        launchPersonPickerRequestStatus: requestStatusTypes.SUCCEEDED
+      };
+    case actionTypes.LAUNCH_PERSON_PICKER_FAILED:
+      return {
+        ...state,
+        launchPersonPickerRequestStatus: requestStatusTypes.FAILED
       };
     default:
       return state;
