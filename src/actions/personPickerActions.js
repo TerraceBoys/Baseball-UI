@@ -1,9 +1,9 @@
 import actionTypes from './types';
 import axios from 'axios';
-import {AWS_PERSON_PICKER_API} from '../config';
+import {AWS_MBTA_API} from '../config';
 
-const axiosPersonPickerInstance = axios.create({
-  baseURL: AWS_PERSON_PICKER_API,
+const axiosInstance = axios.create({
+  baseURL: AWS_MBTA_API,
   timeout: 5000
 });
 
@@ -12,7 +12,7 @@ export const pickPerson = (people) => {
     dispatch({
       type: actionTypes.PICK_PERSON_REQUESTED
     });
-    axiosPersonPickerInstance.post('/pick', {people})
+    axiosInstance.post('/pick', {people})
       .then(() => {
         dispatch({
           type: actionTypes.PICK_PERSON_SUCCEEDED

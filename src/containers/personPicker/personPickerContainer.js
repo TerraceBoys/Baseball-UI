@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import './../../styles/personPicker.css';
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
+import requestStatusTypes from '../../utils/requestStatusTypes';
 import SimpleHeader from '../../components/SimpleHeader';
 import {pickPerson} from '../../actions/personPickerActions';
 
@@ -14,6 +15,7 @@ class PersonPickerContainer extends Component {
       personList: []
     };
     this.renderPersonList = this.renderPersonList.bind(this);
+    this.maybeRenderPickButton = this.maybeRenderPickButton.bind(this);
     this.handleAddPerson = this.handleAddPerson.bind(this);
     this.handlePersonChange = this.handlePersonChange.bind(this);
     this.handleBackClick = this.handleBackClick.bind(this);
@@ -61,6 +63,19 @@ class PersonPickerContainer extends Component {
     });
   }
 
+  maybeRenderPickButton() {
+    const {personList} = this.state;
+    const {pickPersonRequestStatus} = this.props;
+    if (personList.length > 1 && pickPersonRequestStatus !== requestStatusTypes.PENDING) {
+      return (
+        <button className="pick-button" onClick={this.handlePickClick}>Pick A Person</button>
+      );
+    }
+    else {
+      return null;
+    }
+  }
+
   render() {
     const {currentInput, personList} = this.state;
     const {push} = this.props;
@@ -74,7 +89,7 @@ class PersonPickerContainer extends Component {
               <i className="fa fa-plus fa-2x" aria-hidden="true" />
             </button>
           </div>
-          {personList.length > 1 ? <button className="pick-button" onClick={this.handlePickClick}>Pick A Person</button> : null}
+          {this.maybeRenderPickButton()}
           {personList.length > 0 ?
             <table className="person-table">
               <tbody>
@@ -90,11 +105,14 @@ class PersonPickerContainer extends Component {
 
 PersonPickerContainer.propTypes = {
   push: PropTypes.func.isRequired,
-  pickPerson: PropTypes.func.isRequired
+  pickPerson: PropTypes.func.isRequired,
+  pickPersonRequestStatus: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, params) => {
-  return {};
+  return {
+    pickPersonRequestStatus: state.personPicker.pickPersonRequestStatus
+  };
 };
 
 export default connect(mapStateToProps, {
