@@ -1,5 +1,5 @@
 import React from 'react';
-import {Router, Route, IndexRoute} from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 import App from './containers/App';
 import NotFound from './components/NotFound';
 import HomeContainer from './containers/HomeContainer';
@@ -12,11 +12,11 @@ import BeerBoysContainer from './containers/beerBoys/BeerBoysContainer';
 import BoysContainer from './containers/beerBoys/BoysContainer';
 import AddBoyContainer from './containers/beerBoys/AddBoyContainer';
 
-const Routes = (props) => (
+const Routes = props => (
   <Router {...props}>
     <Route path="/" component={App}>
       <IndexRoute component={HomeContainer} />
-      <Route path="baseball" component={BaseballContainer} >
+      <Route path="baseball" component={BaseballContainer}>
         <IndexRoute component={StartContainer} />
         <Route path=":id" component={GameContainer} />
         <Route path=":id/actions" component={GameActionsContainer} />

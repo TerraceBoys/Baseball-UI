@@ -1,13 +1,12 @@
-import React, {Component, PropTypes} from 'react';
-import {Link} from 'react-router';
+import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import mlpIcon from '../images/mlp.jpg';
 
 class Header extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: false,
     };
     this.closeMenu = this.closeMenu.bind(this);
     this.handleMenuClick = this.handleMenuClick.bind(this);
@@ -24,35 +23,47 @@ class Header extends Component {
   }
 
   closeMenu() {
-    const {expanded} = this.state;
+    const { expanded } = this.state;
     if (expanded) {
-      this.setState({expanded: false});
+      this.setState({ expanded: false });
     }
   }
 
   handleMenuClick(evt) {
     evt.stopPropagation();
-    this.setState({expanded: !this.state.expanded});
+    this.setState({ expanded: !this.state.expanded });
   }
 
   handleMenuItemClick() {
-    this.setState({expanded: false});
+    this.setState({ expanded: false });
   }
 
   renderMenuItems() {
-    const {expanded} = this.state;
-    const {gameId} = this.props;
+    const { expanded } = this.state;
+    const { gameId } = this.props;
     if (expanded) {
       return (
         <div className="header-menu-drop-down">
-          {gameId ? <Link className="header-menu-item" to={`/baseball/${gameId}`} onClick={this.handleMenuItemClick}>
-            <i className="fa fa-beer" aria-hidden="true" />
-            Game
-          </Link> : null}
-          {gameId ? <Link className="header-menu-item" to={`/baseball/${gameId}/actions`} onClick={this.handleMenuItemClick}>
-            <i className="fa fa-cog" aria-hidden="true" />
-            Actions
-          </Link> : null}
+          {gameId ? (
+            <Link
+              className="header-menu-item"
+              to={`/baseball/${gameId}`}
+              onClick={this.handleMenuItemClick}
+            >
+              <i className="fa fa-beer" aria-hidden="true" />
+              Game
+            </Link>
+          ) : null}
+          {gameId ? (
+            <Link
+              className="header-menu-item"
+              to={`/baseball/${gameId}/actions`}
+              onClick={this.handleMenuItemClick}
+            >
+              <i className="fa fa-cog" aria-hidden="true" />
+              Actions
+            </Link>
+          ) : null}
           <Link className="header-menu-item exit-item" to="/">
             <i className="fa fa-sign-out" aria-hidden="true" />
             Exit
@@ -69,7 +80,11 @@ class Header extends Component {
         <img className="mlp-logo" src={mlpIcon} alt="MLP" />
         <div className="header-title">Baseball</div>
         <div className="header-menu">
-          <i className="fa fa-bars fa-2x header-menu-icon" aria-hidden="true" onClick={this.handleMenuClick} />
+          <i
+            className="fa fa-bars fa-2x header-menu-icon"
+            aria-hidden="true"
+            onClick={this.handleMenuClick}
+          />
           {this.renderMenuItems()}
         </div>
       </div>

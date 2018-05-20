@@ -1,16 +1,16 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 class BoysContainer extends Component {
-
   constructor(props) {
     super(props);
     this.handleAddNewBoyClick = this.handleAddNewBoyClick.bind(this);
   }
 
   handleAddNewBoyClick() {
-    this.props.push('/beer-boys/add-boy');
+    const { pushRoute } = this.props;
+    pushRoute('/beer-boys/add-boy');
   }
 
   render() {
@@ -20,17 +20,12 @@ class BoysContainer extends Component {
       </div>
     );
   }
-
 }
 
 BoysContainer.propTypes = {
-  push: PropTypes.func.isRequired
+  pushRoute: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, params) => {
-  return {};
-};
-
-export default connect(mapStateToProps, {
-  push
+export default connect(null, {
+  push: pushRoute,
 })(BoysContainer);

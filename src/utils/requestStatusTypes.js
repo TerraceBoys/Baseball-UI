@@ -1,9 +1,10 @@
+import Keymirror from 'keymirror';
 
-const requestStatusTypes = {
-  UNINITIALIZED: 'UNINITIALIZED',
-  PENDING: 'PENDING',
-  SUCCEEDED: 'SUCCEEDED',
-  FAILED: 'FAILED'
-};
+const requestStatusTypes = keymirror({
+  UNINITIALIZED: null,
+  PENDING: null,
+  SUCCEEDED: null,
+  FAILED: null,
+});
 
 export default requestStatusTypes;

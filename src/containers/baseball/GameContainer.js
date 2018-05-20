@@ -1,6 +1,5 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import requestStatusTypes from '../../utils/requestStatusTypes';
 import {
   newStrike,
@@ -10,11 +9,10 @@ import {
   newTriple,
   newHomeRun,
   newSteal,
-  newPick
+  newPick,
 } from '../../actions/baseballActions';
 
 class GameContainer extends Component {
-
   constructor(props) {
     super(props);
     this.handleStrikeClick = this.handleStrikeClick.bind(this);
@@ -29,50 +27,47 @@ class GameContainer extends Component {
   }
 
   handleStrikeClick() {
-    const {gameId} = this.props;
+    const { gameId } = this.props;
     this.props.newStrike(gameId);
   }
 
   handleOutClick() {
-    const {gameId} = this.props;
+    const { gameId } = this.props;
     this.props.newOut(gameId);
   }
 
   handleSingleClick() {
-    const {gameId} = this.props;
+    const { gameId } = this.props;
     this.props.newSingle(gameId);
   }
 
   handleDoubleClick() {
-    const {gameId} = this.props;
+    const { gameId } = this.props;
     this.props.newDouble(gameId);
   }
 
   handleTripleClick() {
-    const {gameId} = this.props;
+    const { gameId } = this.props;
     this.props.newTriple(gameId);
   }
 
   handleHomeRunClick() {
-    const {gameId} = this.props;
+    const { gameId } = this.props;
     this.props.newHomeRun(gameId);
   }
 
   handleStealClick() {
-    const {gameId} = this.props;
+    const { gameId } = this.props;
     this.props.newSteal(gameId);
   }
 
   handlePickClick() {
-    const {gameId} = this.props;
-    this.props.newPick(gameId)
+    const { gameId } = this.props;
+    this.props.newPick(gameId);
   }
 
   renderGameEventMessage() {
-    const {
-      gameEventMessage,
-      gameEventRequestStatus
-    } = this.props;
+    const { gameEventMessage, gameEventRequestStatus } = this.props;
     let status = '';
     if (gameEventRequestStatus === requestStatusTypes.SUCCEEDED) {
       status = 'success';
@@ -83,7 +78,7 @@ class GameContainer extends Component {
     }
     return (
       <div className="game-event-status-container">
-        <div className={`game-event-status-circle ${status}`}></div>
+        <div className={`game-event-status-circle ${status}`} />
         {gameEventMessage}
       </div>
     );
@@ -96,8 +91,18 @@ class GameContainer extends Component {
         <div className="grass-container">
           <div className="content-title">Defense</div>
           <div className="button-wrapper">
-            <button className="game-event-button button-bad" onClick={this.handleStrikeClick}>Strike</button>
-            <button className="game-event-button button-bad" onClick={this.handleOutClick}>Out</button>
+            <button
+              className="game-event-button button-bad"
+              onClick={this.handleStrikeClick}
+            >
+              Strike
+            </button>
+            <button
+              className="game-event-button button-bad"
+              onClick={this.handleOutClick}
+            >
+              Out
+            </button>
           </div>
         </div>
         <div className="dirt-container">
@@ -120,38 +125,45 @@ class GameContainer extends Component {
         <div className="grass-container">
           <div className="content-title">Base running</div>
           <div className="button-wrapper">
-            <button className="game-event-button button-good" onClick={this.handleStealClick}>Steal</button>
-            <button className="game-event-button button-bad" onClick={this.handlePickClick}>Pick</button>
+            <button
+              className="game-event-button button-good"
+              onClick={this.handleStealClick}
+            >
+              Steal
+            </button>
+            <button
+              className="game-event-button button-bad"
+              onClick={this.handlePickClick}
+            >
+              Pick
+            </button>
           </div>
         </div>
       </div>
     );
   }
-
 }
 
 GameContainer.propTypes = {
   gameId: PropTypes.string.isRequired,
   gameEventMessage: PropTypes.string.isRequired,
   gameEventRequestStatus: PropTypes.string.isRequired,
-  push: PropTypes.func.isRequired,
   newStrike: PropTypes.func.isRequired,
   newOut: PropTypes.func.isRequired,
   newSingle: PropTypes.func.isRequired,
   newDouble: PropTypes.func.isRequired,
-  newTriple: PropTypes.func.isRequired
+  newTriple: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, {params}) => {
+const mapStateToProps = (state, { params }) => {
   return {
     gameId: params.id,
     gameEventMessage: state.baseball.gameEventMessage,
-    gameEventRequestStatus: state.baseball.gameEventRequestStatus
+    gameEventRequestStatus: state.baseball.gameEventRequestStatus,
   };
 };
 
 export default connect(mapStateToProps, {
-  push,
   newStrike,
   newOut,
   newSingle,
@@ -159,5 +171,5 @@ export default connect(mapStateToProps, {
   newTriple,
   newHomeRun,
   newSteal,
-  newPick
+  newPick,
 })(GameContainer);

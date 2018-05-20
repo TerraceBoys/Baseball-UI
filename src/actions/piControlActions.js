@@ -1,68 +1,71 @@
 import actionTypes from './types';
 import axios from 'axios';
-import {AWS_BASEBALL_API, AWS_MBTA_API} from '../config';
+import { AWS_BASEBALL_API, AWS_MBTA_API } from '../config';
 
 const axiosBaseballInstance = axios.create({
-  baseURL: AWS_BASEBALL_API
+  baseURL: AWS_BASEBALL_API,
 });
 
 const axiosMBTAInstance = axios.create({
-  baseURL: AWS_MBTA_API
+  baseURL: AWS_MBTA_API,
 });
 
 export const launchBaseball = () => {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
-      type: actionTypes.LAUNCH_BASEBALL_REQUESTED
+      type: actionTypes.LAUNCH_BASEBALL_REQUESTED,
     });
-    axiosBaseballInstance.get('/baseball')
+    axiosBaseballInstance
+      .get('/baseball')
       .then(() => {
         dispatch({
-          type: actionTypes.LAUNCH_BASEBALL_SUCCEEDED
+          type: actionTypes.LAUNCH_BASEBALL_SUCCEEDED,
         });
       })
       .catch(() => {
         dispatch({
-          type: actionTypes.LAUNCH_BASEBALL_FAILED
+          type: actionTypes.LAUNCH_BASEBALL_FAILED,
         });
       });
-  }
+  };
 };
 
 export const launchMBTA = () => {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
-      type: actionTypes.LAUNCH_MBTA_REQUESTED
+      type: actionTypes.LAUNCH_MBTA_REQUESTED,
     });
-    axiosMBTAInstance.get('/mbta')
+    axiosMBTAInstance
+      .get('/mbta')
       .then(() => {
         dispatch({
-          type: actionTypes.LAUNCH_MBTA_SUCCEEDED
+          type: actionTypes.LAUNCH_MBTA_SUCCEEDED,
         });
       })
       .catch(() => {
         dispatch({
-          type: actionTypes.LAUNCH_MBTA_FAILED
+          type: actionTypes.LAUNCH_MBTA_FAILED,
         });
       });
-  }
+  };
 };
 
 export const launchPersonPicker = () => {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
-      type: actionTypes.LAUNCH_PERSON_PICKER_REQUESTED
+      type: actionTypes.LAUNCH_PERSON_PICKER_REQUESTED,
     });
-    axiosMBTAInstance.get('/person-picker')
+    axiosMBTAInstance
+      .get('/person-picker')
       .then(() => {
         dispatch({
-          type: actionTypes.LAUNCH_PERSON_PICKER_SUCCEEDED
+          type: actionTypes.LAUNCH_PERSON_PICKER_SUCCEEDED,
         });
       })
       .catch(() => {
         dispatch({
-          type: actionTypes.LAUNCH_PERSON_PICKER_FAILED
+          type: actionTypes.LAUNCH_PERSON_PICKER_FAILED,
         });
       });
-  }
+  };
 };

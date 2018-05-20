@@ -1,11 +1,9 @@
-import React, {Component, PropTypes} from 'react';
-import {Stack} from 'immutable';
-import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
-import {undoStrike} from '../../actions/baseballActions';
+import React, { Component, PropTypes } from 'react';
+import { Stack } from 'immutable';
+import { connect } from 'react-redux';
+import { undoStrike } from '../../actions/baseballActions';
 
 class GameActionsContainer extends Component {
-
   constructor(props) {
     super(props);
     this.renderEventUndo = this.renderEventUndo.bind(this);
@@ -15,7 +13,12 @@ class GameActionsContainer extends Component {
 
   renderEventUndo(event) {
     return (
-      <td className="undo-action" onClick={() => {this.props[event.undoMethod]()}}>
+      <td
+        className="undo-action"
+        onClick={() => {
+          this.props[event.undoMethod]();
+        }}
+      >
         <i className="fa fa-undo m-right-1" aria-hidden="true" />
         undo
       </td>
@@ -23,12 +26,14 @@ class GameActionsContainer extends Component {
   }
 
   renderGameEvents() {
-    const {gameEventStack} = this.props;
+    const { gameEventStack } = this.props;
     return gameEventStack.map((event, index) => {
       return (
         <tr key={index}>
           <td>{event.name}</td>
-          {index === gameEventStack.size - 1 ? this.renderEventUndo(event) : null}
+          {index === gameEventStack.size - 1
+            ? this.renderEventUndo(event)
+            : null}
         </tr>
       );
     });
@@ -43,35 +48,34 @@ class GameActionsContainer extends Component {
   }
 
   render() {
-    const {gameEventStack} = this.props;
+    const { gameEventStack } = this.props;
     return (
       <div className="m-top-3">
         <table className="game-actions-table">
           <tbody>
-            {gameEventStack.size ? this.renderGameEvents() : this.renderNoActionsMessage()}
+            {gameEventStack.size
+              ? this.renderGameEvents()
+              : this.renderNoActionsMessage()}
           </tbody>
         </table>
       </div>
     );
   }
-
 }
 
 GameActionsContainer.propTypes = {
   gameId: PropTypes.string.isRequired,
   gameEventStack: PropTypes.instanceOf(Stack).isRequired,
-  push: PropTypes.func.isRequired,
-  undoStrike: PropTypes.func.isRequired
+  undoStrike: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, {params}) => {
+const mapStateToProps = (state, { params }) => {
   return {
     gameId: params.id,
-    gameEventStack: state.baseball.gameEventStack
+    gameEventStack: state.baseball.gameEventStack,
   };
 };
 
 export default connect(mapStateToProps, {
-  push,
-  undoStrike
+  undoStrike,
 })(GameActionsContainer);

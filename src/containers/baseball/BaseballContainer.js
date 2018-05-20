@@ -1,12 +1,11 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import './../../styles/baseball.css';
 import BaseballHeader from '../../components/BaseballHeader';
 
 class BaseballContainer extends Component {
-
   render() {
-    const {children, gameId} = this.props;
+    const { children, gameId } = this.props;
     return (
       <div className="baseball-container">
         <BaseballHeader gameId={gameId} />
@@ -14,17 +13,16 @@ class BaseballContainer extends Component {
       </div>
     );
   }
-
 }
 
 BaseballContainer.propTypes = {
   children: PropTypes.node.isRequired,
-  gameId: PropTypes.string
+  gameId: PropTypes.string,
 };
 
-const mapStateToProps = (state, {params}) => {
+const mapStateToProps = (state, { params }) => {
   return {
-    gameId: params.id
+    gameId: params.id,
   };
 };
 
