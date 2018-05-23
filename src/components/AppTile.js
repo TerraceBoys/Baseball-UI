@@ -4,8 +4,9 @@ class AppTile extends Component {
   render() {
     const { className, label, launchApp } = this.props;
     return (
-      <div className={`home-app-button ${className}`} onClick={launchApp}>
-        {label}
+      <div className={`app-tile-btn ${className}`} onClick={launchApp}>
+        <div className="app-tile-btn-title">{label}</div>
+        <div className="app-tile-btn-body">launch</div>
       </div>
     );
   }

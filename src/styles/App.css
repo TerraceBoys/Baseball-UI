@@ -46,3 +46,9 @@ button:hover {
   font-size: 1.1rem;
   float: right;
 }
+
+.not-found {
+  width: 70%;
+  margin: 50px auto;
+  text-align: center;
+}

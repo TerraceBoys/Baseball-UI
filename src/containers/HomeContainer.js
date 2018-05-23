@@ -89,11 +89,6 @@ class HomeContainer extends Component {
             label="Beer Boys"
             launchApp={this.handleBeerBoysClick}
           />
-          <AppTile
-            className=""
-            label="Spotify Que"
-            launchApp={this.handleSpotifyClick}
-          />
         </div>
       </div>
     );
