@@ -12,22 +12,21 @@ export const startNewGame = () => {
     dispatch({
       type: actionTypes.START_NEW_BASEBALL_REQUESTED,
     });
+    const success = resp =>
+      dispatch({
+        type: actionTypes.START_NEW_BASEBALL_SUCCEEDED,
+        gameId: resp.data.id,
+      });
+    const error = err =>
+      dispatch({
+        type: actionTypes.START_NEW_BASEBALL_FAILED,
+        error: err.response,
+      });
     axiosInstance
       .get('baseball/new-game', {
         responseType: 'json',
       })
-      .then(response => {
-        dispatch({
-          type: actionTypes.START_NEW_BASEBALL_SUCCEEDED,
-          gameId: response.data.id,
-        });
-      })
-      .catch(error => {
-        dispatch({
-          type: actionTypes.START_NEW_BASEBALL_FAILED,
-          error: error.response,
-        });
-      });
+      .then(success, error);
   };
 };
 
@@ -36,22 +35,21 @@ export const joinCurrentGame = () => {
     dispatch({
       type: actionTypes.JOIN_CURRENT_BASEBALL_REQUESTED,
     });
+    const success = resp =>
+      dispatch({
+        type: actionTypes.JOIN_CURRENT_BASEBALL_SUCCEEDED,
+        gameId: resp.data.id,
+      });
+    const error = err =>
+      dispatch({
+        type: actionTypes.JOIN_CURRENT_BASEBALL_FAILED,
+        error: err.response,
+      });
     axiosInstance
       .get(`baseball/current/game-state`, {
         responseType: 'json',
       })
-      .then(response => {
-        dispatch({
-          type: actionTypes.JOIN_CURRENT_BASEBALL_SUCCEEDED,
-          gameId: response.data.id,
-        });
-      })
-      .catch(error => {
-        dispatch({
-          type: actionTypes.JOIN_CURRENT_BASEBALL_FAILED,
-          error: error.response,
-        });
-      });
+      .then(success, error);
   };
 };
 
@@ -60,22 +58,21 @@ export const getGameConfigurationById = id => {
     dispatch({
       type: actionTypes.BASEBALL_CONFIG_REQUESTED,
     });
+    const success = resp =>
+      dispatch({
+        type: actionTypes.BASEBALL_CONFIG_SUCCEEDED,
+        gameConfig: resp.data,
+      });
+    const error = err =>
+      dispatch({
+        type: actionTypes.BASEBALL_CONFIG_FAILED,
+        error: err.response,
+      });
     axiosInstance
       .get(`baseball/${id}/game-state`, {
         responseType: 'json',
       })
-      .then(response => {
-        dispatch({
-          type: actionTypes.BASEBALL_CONFIG_SUCCEEDED,
-          gameConfig: response.data,
-        });
-      })
-      .catch(error => {
-        dispatch({
-          type: actionTypes.BASEBALL_CONFIG_FAILED,
-          error: error.response,
-        });
-      });
+      .then(success, error);
   };
 };
 
@@ -84,24 +81,23 @@ const gameAction = (endpoint, event, undoMethod, messages) => {
     dispatch({
       type: actionTypes.NEW_BASEBALL_EVENT_REQUESTED,
     });
+    const success = resp =>
+      dispatch({
+        type: actionTypes.NEW_BASEBALL_EVENT_SUCCEEDED,
+        eventSuccess: messages.success,
+        gameEvent: event,
+        undoMethod,
+      });
+    const error = err =>
+      dispatch({
+        type: actionTypes.NEW_BASEBALL_EVENT_FAILED,
+        eventError: messages.error,
+      });
     axiosInstance
       .get(endpoint, {
         responseType: 'json',
       })
-      .then(() => {
-        dispatch({
-          type: actionTypes.NEW_BASEBALL_EVENT_SUCCEEDED,
-          eventSuccess: messages.success,
-          gameEvent: event,
-          undoMethod,
-        });
-      })
-      .catch(() => {
-        dispatch({
-          type: actionTypes.NEW_BASEBALL_EVENT_FAILED,
-          eventError: messages.error,
-        });
-      });
+      .then(success, error);
   };
 };
 

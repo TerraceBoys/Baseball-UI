@@ -15,6 +15,7 @@ class HomeContainer extends Component {
     super(props);
     this.renderLoadingScreen = this.renderLoadingScreen.bind(this);
     this.handleBeerBoysClick = this.handleBeerBoysClick.bind(this);
+    this.handleSpotifyClick = this.handleSpotifyClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,6 +41,11 @@ class HomeContainer extends Component {
   handleBeerBoysClick() {
     const { pushRoute } = this.props;
     pushRoute('/beer-boys');
+  }
+
+  handleSpotifyClick() {
+    const { pushRoute } = this.props;
+    pushRoute('/spotify');
   }
 
   renderLoadingScreen() {
@@ -82,6 +88,11 @@ class HomeContainer extends Component {
             className="launch-beer-boys-button"
             label="Beer Boys"
             launchApp={this.handleBeerBoysClick}
+          />
+          <AppTile
+            className=""
+            label="Spotify Que"
+            launchApp={this.handleSpotifyClick}
           />
         </div>
       </div>

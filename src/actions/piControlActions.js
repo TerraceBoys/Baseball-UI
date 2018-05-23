@@ -15,18 +15,15 @@ export const launchBaseball = () => {
     dispatch({
       type: actionTypes.LAUNCH_BASEBALL_REQUESTED,
     });
-    axiosBaseballInstance
-      .get('/baseball')
-      .then(() => {
-        dispatch({
-          type: actionTypes.LAUNCH_BASEBALL_SUCCEEDED,
-        });
-      })
-      .catch(() => {
-        dispatch({
-          type: actionTypes.LAUNCH_BASEBALL_FAILED,
-        });
+    const success = resp =>
+      dispatch({
+        type: actionTypes.LAUNCH_BASEBALL_SUCCEEDED,
       });
+    const error = err =>
+      dispatch({
+        type: actionTypes.LAUNCH_BASEBALL_FAILED,
+      });
+    axiosBaseballInstance.get('/baseball').then(success, error);
   };
 };
 
@@ -35,18 +32,15 @@ export const launchMBTA = () => {
     dispatch({
       type: actionTypes.LAUNCH_MBTA_REQUESTED,
     });
-    axiosMBTAInstance
-      .get('/mbta')
-      .then(() => {
-        dispatch({
-          type: actionTypes.LAUNCH_MBTA_SUCCEEDED,
-        });
-      })
-      .catch(() => {
-        dispatch({
-          type: actionTypes.LAUNCH_MBTA_FAILED,
-        });
+    const success = resp =>
+      dispatch({
+        type: actionTypes.LAUNCH_MBTA_SUCCEEDED,
       });
+    const error = err =>
+      dispatch({
+        type: actionTypes.LAUNCH_MBTA_FAILED,
+      });
+    axiosMBTAInstance.get('/mbta').then(success, error);
   };
 };
 
@@ -55,17 +49,14 @@ export const launchPersonPicker = () => {
     dispatch({
       type: actionTypes.LAUNCH_PERSON_PICKER_REQUESTED,
     });
-    axiosMBTAInstance
-      .get('/person-picker')
-      .then(() => {
-        dispatch({
-          type: actionTypes.LAUNCH_PERSON_PICKER_SUCCEEDED,
-        });
-      })
-      .catch(() => {
-        dispatch({
-          type: actionTypes.LAUNCH_PERSON_PICKER_FAILED,
-        });
+    const success = resp =>
+      dispatch({
+        type: actionTypes.LAUNCH_PERSON_PICKER_SUCCEEDED,
       });
+    const error = err =>
+      dispatch({
+        type: actionTypes.LAUNCH_PERSON_PICKER_FAILED,
+      });
+    axiosMBTAInstance.get('/person-picker').then(success, error);
   };
 };

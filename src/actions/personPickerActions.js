@@ -12,17 +12,14 @@ export const pickPerson = people => {
     dispatch({
       type: actionTypes.PICK_PERSON_REQUESTED,
     });
-    axiosInstance
-      .post('/pick', { people })
-      .then(() => {
-        dispatch({
-          type: actionTypes.PICK_PERSON_SUCCEEDED,
-        });
-      })
-      .catch(() => {
-        dispatch({
-          type: actionTypes.PICK_PERSON_FAILED,
-        });
+    const success = resp =>
+      dispatch({
+        type: actionTypes.PICK_PERSON_SUCCEEDED,
       });
+    const error = err =>
+      dispatch({
+        type: actionTypes.PICK_PERSON_FAILED,
+      });
+    axiosInstance.post('/pick', { people }).then(success, error);
   };
 };

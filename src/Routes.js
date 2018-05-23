@@ -11,6 +11,7 @@ import PersonPickerContainer from './containers/personPicker/PersonPickerContain
 import BeerBoysContainer from './containers/beerBoys/BeerBoysContainer';
 import BoysContainer from './containers/beerBoys/BoysContainer';
 import AddBoyContainer from './containers/beerBoys/AddBoyContainer';
+import SpotifyContainer from './containers/spotifyQue/SpotifyContainer';
 
 const Routes = props => (
   <Router {...props}>
@@ -26,6 +27,7 @@ const Routes = props => (
         <IndexRoute component={BoysContainer} />
         <Route path="add-boy" component={AddBoyContainer} />
       </Route>
+      <Route path="spotify" component={SpotifyContainer} />
       <Route path="*" component={NotFound} />
     </Route>
   </Router>
