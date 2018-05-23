@@ -1,15 +1,10 @@
 import actionTypes from '../actions/types';
-import {
-  FAILED,
-  PENDING,
-  SUCCEEDED,
-  UNINITIALIZED,
-} from '../utils/requestStatusTypes';
+import requestStatusTypes from '../utils/requestStatusTypes';
 
 const initialState = {
-  launchMBTARequestStatus: UNINITIALIZED,
-  launchBaseballRequestStatus: UNINITIALIZED,
-  launchPersonPickerRequestStatus: UNINITIALIZED,
+  launchMBTARequestStatus: requestStatusTypes.UNINITIALIZED,
+  launchBaseballRequestStatus: requestStatusTypes.UNINITIALIZED,
+  launchPersonPickerRequestStatus: requestStatusTypes.UNINITIALIZED,
 };
 
 export default (state = initialState, action) => {
@@ -17,47 +12,47 @@ export default (state = initialState, action) => {
     case actionTypes.LAUNCH_MBTA_REQUESTED:
       return {
         ...state,
-        launchMBTARequestStatus: PENDING,
+        launchMBTARequestStatus: requestStatusTypes.PENDING,
       };
     case actionTypes.LAUNCH_MBTA_SUCCEEDED:
       return {
         ...state,
-        launchMBTARequestStatus: SUCCEEDED,
+        launchMBTARequestStatus: requestStatusTypes.SUCCEEDED,
       };
     case actionTypes.LAUNCH_MBTA_FAILED:
       return {
         ...state,
-        launchMBTARequestStatus: FAILED,
+        launchMBTARequestStatus: requestStatusTypes.FAILED,
       };
     case actionTypes.LAUNCH_BASEBALL_REQUESTED:
       return {
         ...state,
-        launchBaseballRequestStatus: PENDING,
+        launchBaseballRequestStatus: requestStatusTypes.PENDING,
       };
     case actionTypes.LAUNCH_BASEBALL_SUCCEEDED:
       return {
         ...state,
-        launchBaseballRequestStatus: SUCCEEDED,
+        launchBaseballRequestStatus: requestStatusTypes.SUCCEEDED,
       };
     case actionTypes.LAUNCH_BASEBALL_FAILED:
       return {
         ...state,
-        launchBaseballRequestStatus: FAILED,
+        launchBaseballRequestStatus: requestStatusTypes.FAILED,
       };
     case actionTypes.LAUNCH_PERSON_PICKER_REQUESTED:
       return {
         ...state,
-        launchPersonPickerRequestStatus: PENDING,
+        launchPersonPickerRequestStatus: requestStatusTypes.PENDING,
       };
     case actionTypes.LAUNCH_PERSON_PICKER_SUCCEEDED:
       return {
         ...state,
-        launchPersonPickerRequestStatus: SUCCEEDED,
+        launchPersonPickerRequestStatus: requestStatusTypes.SUCCEEDED,
       };
     case actionTypes.LAUNCH_PERSON_PICKER_FAILED:
       return {
         ...state,
-        launchPersonPickerRequestStatus: FAILED,
+        launchPersonPickerRequestStatus: requestStatusTypes.FAILED,
       };
     default:
       return state;

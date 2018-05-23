@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import './../styles/home.css';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { PENDING, SUCCEEDED } from '../utils/requestStatusTypes';
+import requestStatusTypes from '../utils/requestStatusTypes';
 import AppTile from '../components/AppTile';
 import {
   launchBaseball,
@@ -24,14 +24,14 @@ class HomeContainer extends Component {
       pushRoute,
     } = this.props;
     if (
-      launchBaseballRequestStatus === PENDING &&
-      nextProps.launchBaseballRequestStatus === SUCCEEDED
+      launchBaseballRequestStatus === requestStatusTypes.PENDING &&
+      nextProps.launchBaseballRequestStatus === requestStatusTypes.SUCCEEDED
     ) {
       pushRoute('/baseball');
     }
     if (
-      launchPersonPickerRequestStatus === PENDING &&
-      nextProps.launchPersonPickerRequestStatus === SUCCEEDED
+      launchPersonPickerRequestStatus === requestStatusTypes.PENDING &&
+      nextProps.launchPersonPickerRequestStatus === requestStatusTypes.SUCCEEDED
     ) {
       pushRoute('/person-picker');
     }
@@ -44,7 +44,7 @@ class HomeContainer extends Component {
 
   renderLoadingScreen() {
     const { launchBaseballRequestStatus } = this.props;
-    if (launchBaseballRequestStatus === PENDING) {
+    if (launchBaseballRequestStatus === requestStatusTypes.PENDING) {
       return (
         <div className="baseball-loading-popup">
           <i
@@ -107,7 +107,7 @@ const mapStateToProps = (state, { params }) => {
 };
 
 export default connect(mapStateToProps, {
-  push: pushRoute,
+  pushRoute: push,
   launchBaseball,
   launchMBTA,
   launchPersonPicker,

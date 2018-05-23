@@ -26,5 +26,5 @@ BeerBoysContainer.propTypes = {
 };
 
 export default connect(null, {
-  pushRoute,
+  pushRoute: push,
 })(BeerBoysContainer);

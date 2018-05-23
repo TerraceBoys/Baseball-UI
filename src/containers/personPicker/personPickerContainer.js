@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import './../../styles/personPicker.css';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { PENDING } from '../../utils/requestStatusTypes';
+import requestStatusTypes from '../../utils/requestStatusTypes';
 import SimpleHeader from '../../components/SimpleHeader';
 import { pickPerson } from '../../actions/personPickerActions';
 
@@ -69,7 +69,10 @@ class PersonPickerContainer extends Component {
   renderPickButton() {
     const { personList } = this.state;
     const { pickPersonRequestStatus } = this.props;
-    if (personList.length > 1 && pickPersonRequestStatus !== PENDING) {
+    if (
+      personList.length > 1 &&
+      pickPersonRequestStatus !== requestStatusTypes.PENDING
+    ) {
       return (
         <button className="pick-button" onClick={this.handlePickClick}>
           Pick A Person
@@ -130,6 +133,6 @@ const mapStateToProps = (state, params) => {
 };
 
 export default connect(mapStateToProps, {
-  push: pushRoute,
+  pushRoute: push,
   pickPerson,
 })(PersonPickerContainer);

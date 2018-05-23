@@ -1,17 +1,12 @@
 import { Map, Stack } from 'immutable';
 import actionTypes from '../actions/types';
-import {
-  FAILED,
-  PENDING,
-  SUCCEEDED,
-  UNINITIALIZED,
-} from '../utils/requestStatusTypes';
+import requestStatusTypes from '../utils/requestStatusTypes';
 
 const initialState = {
   beginGameId: null,
-  startNewGameRequestStatus: UNINITIALIZED,
-  joinCurrentGameRequestStatus: UNINITIALIZED,
-  gameConfigRequestStatus: UNINITIALIZED,
+  startNewGameRequestStatus: requestStatusTypes.UNINITIALIZED,
+  joinCurrentGameRequestStatus: requestStatusTypes.UNINITIALIZED,
+  gameConfigRequestStatus: requestStatusTypes.UNINITIALIZED,
   gameConfig: new Map(),
   gameEventStack: new Stack([
     { name: 'strike', undoMethod: 'undoStrike' },
@@ -20,7 +15,7 @@ const initialState = {
     { name: 'steal' },
   ]),
   gameEventMessage: 'No game events',
-  gameEventRequestStatus: UNINITIALIZED,
+  gameEventRequestStatus: requestStatusTypes.UNINITIALIZED,
 };
 
 export default (state = initialState, action) => {
@@ -28,58 +23,58 @@ export default (state = initialState, action) => {
     case actionTypes.START_NEW_BASEBALL_REQUESTED:
       return {
         ...state,
-        startNewGameRequestStatus: PENDING,
+        startNewGameRequestStatus: requestStatusTypes.PENDING,
       };
     case actionTypes.START_NEW_BASEBALL_SUCCEEDED:
       return {
         ...state,
         beginGameId: action.gameId,
         gameEventStack: new Stack(),
-        startNewGameRequestStatus: SUCCEEDED,
+        startNewGameRequestStatus: requestStatusTypes.SUCCEEDED,
       };
     case actionTypes.START_NEW_BASEBALL_FAILED:
       return {
         ...state,
-        startNewGameRequestStatus: FAILED,
+        startNewGameRequestStatus: requestStatusTypes.FAILED,
       };
     case actionTypes.JOIN_CURRENT_BASEBALL_REQUESTED:
       return {
         ...state,
-        joinCurrentGameRequestStatus: PENDING,
+        joinCurrentGameRequestStatus: requestStatusTypes.PENDING,
       };
     case actionTypes.JOIN_CURRENT_BASEBALL_SUCCEEDED:
       return {
         ...state,
         beginGameId: action.gameId,
-        joinCurrentGameRequestStatus: SUCCEEDED,
+        joinCurrentGameRequestStatus: requestStatusTypes.SUCCEEDED,
       };
     case actionTypes.JOIN_CURRENT_BASEBALL_FAILED:
       return {
         ...state,
-        joinCurrentGameRequestStatus: FAILED,
+        joinCurrentGameRequestStatus: requestStatusTypes.FAILED,
       };
     case actionTypes.BASEBALL_CONFIG_REQUESTED:
       return {
         ...state,
-        gameConfigRequestStatus: PENDING,
+        gameConfigRequestStatus: requestStatusTypes.PENDING,
       };
     case actionTypes.BASEBALL_CONFIG_SUCCEEDED:
       return {
         ...state,
         gameConfig: action.gameConfig,
-        gameConfigRequestStatus: SUCCEEDED,
+        gameConfigRequestStatus: requestStatusTypes.SUCCEEDED,
       };
     case actionTypes.BASEBALL_CONFIG_FAILED:
       return {
         ...state,
         gameConfigError: action.error,
-        gameConfigRequestStatus: FAILED,
+        gameConfigRequestStatus: requestStatusTypes.FAILED,
       };
     case actionTypes.NEW_BASEBALL_EVENT_REQUESTED:
       return {
         ...state,
         gameEventMessage: '',
-        gameEventRequestStatus: PENDING,
+        gameEventRequestStatus: requestStatusTypes.PENDING,
       };
     case actionTypes.NEW_BASEBALL_EVENT_SUCCEEDED:
       return {
@@ -89,13 +84,13 @@ export default (state = initialState, action) => {
           undoMethod: action.undoMethod,
         }),
         gameEventMessage: action.eventSuccess,
-        gameEventRequestStatus: SUCCEEDED,
+        gameEventRequestStatus: requestStatusTypes.SUCCEEDED,
       };
     case actionTypes.NEW_BASEBALL_EVENT_FAILED:
       return {
         ...state,
         gameEventMessage: action.eventError,
-        gameEventRequestStatus: FAILED,
+        gameEventRequestStatus: requestStatusTypes.FAILED,
       };
     default:
       return state;

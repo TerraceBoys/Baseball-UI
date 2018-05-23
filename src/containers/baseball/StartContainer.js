@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { PENDING, SUCCEEDED } from '../../utils/requestStatusTypes';
+import requestStatusTypes from '../../utils/requestStatusTypes';
 import { startNewGame, joinCurrentGame } from '../../actions/baseballActions';
 
 class StartContainer extends Component {
@@ -17,8 +17,8 @@ class StartContainer extends Component {
     const { beginGameId, joinCurrentGameRequestStatus, pushRoute } = this.props;
     if (
       beginGameId !== nextProps.beginGameId ||
-      (joinCurrentGameRequestStatus === PENDING &&
-        nextProps.joinCurrentGameRequestStatus === SUCCEEDED)
+      (joinCurrentGameRequestStatus === requestStatusTypes.PENDING &&
+        nextProps.joinCurrentGameRequestStatus === requestStatusTypes.SUCCEEDED)
     ) {
       pushRoute(`/baseball/${nextProps.beginGameId}`);
     }
@@ -70,7 +70,7 @@ const mapStateToProps = (state, params) => {
 };
 
 export default connect(mapStateToProps, {
-  push: pushRoute,
+  pushRoute: push,
   startNewGame,
   joinCurrentGame,
 })(StartContainer);

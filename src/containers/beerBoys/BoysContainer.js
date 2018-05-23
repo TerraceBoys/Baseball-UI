@@ -27,5 +27,5 @@ BoysContainer.propTypes = {
 };
 
 export default connect(null, {
-  push: pushRoute,
+  pushRoute: push,
 })(BoysContainer);

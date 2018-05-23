@@ -1,4 +1,4 @@
-import Keymirror from 'keymirror';
+import keymirror from 'keymirror';
 
 const requestStatusTypes = keymirror({
   UNINITIALIZED: null,

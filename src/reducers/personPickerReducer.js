@@ -1,13 +1,8 @@
 import actionTypes from '../actions/types';
-import {
-  FAILED,
-  PENDING,
-  SUCCEEDED,
-  UNINITIALIZED,
-} from '../utils/requestStatusTypes';
+import requestStatusTypes from '../utils/requestStatusTypes';
 
 const initialState = {
-  pickPersonRequestStatus: UNINITIALIZED,
+  pickPersonRequestStatus: requestStatusTypes.UNINITIALIZED,
 };
 
 export default (state = initialState, action) => {
@@ -15,17 +10,17 @@ export default (state = initialState, action) => {
     case actionTypes.PICK_PERSON_REQUESTED:
       return {
         ...state,
-        pickPersonRequestStatus: PENDING,
+        pickPersonRequestStatus: requestStatusTypes.PENDING,
       };
     case actionTypes.PICK_PERSON_SUCCEEDED:
       return {
         ...state,
-        pickPersonRequestStatus: SUCCEEDED,
+        pickPersonRequestStatus: requestStatusTypes.SUCCEEDED,
       };
     case actionTypes.PICK_PERSON_FAILED:
       return {
         ...state,
-        pickPersonRequestStatus: FAILED,
+        pickPersonRequestStatus: requestStatusTypes.FAILED,
       };
     default:
       return state;
