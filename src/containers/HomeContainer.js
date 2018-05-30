@@ -71,21 +71,25 @@ class HomeContainer extends Component {
         <div className="home-button-container">
           <AppTile
             className="launch-mbta-button"
+            icon="subway"
             label="MBTA Times"
             launchApp={this.props.launchMBTA}
           />
           <AppTile
             className="launch-baseball-button"
+            icon="baseball-ball"
             label="Baseball"
             launchApp={this.props.launchBaseball}
           />
           <AppTile
             className="launch-people-button"
+            icon="hand-o-up"
             label="Person Picker"
             launchApp={this.props.launchPersonPicker}
           />
           <AppTile
             className="launch-beer-boys-button"
+            icon="beer"
             label="Beer Boys"
             launchApp={this.handleBeerBoysClick}
           />

@@ -1,15 +1,16 @@
 .home-container {
     height: 100%;
-    background: #F8FBFB;
+    background: linear-gradient(#F7FAF9, #F3F7F6);
 }
 
 .home-title {
-    color: #F8FBFB;
+    color: #FCFAF9;
+    height: 40px;
+    line-height: 40px;
     letter-spacing: 3px;
-    font-size: 1.9rem;
-    padding: 10px;
-    border-bottom: 1px solid #011627;
-    background: #23A1EA;
+    font-size: 32px;
+    padding: 20px;
+    background: #031927;
 }
 
 .home-button-container {
@@ -21,24 +22,41 @@
 }
 
 .app-tile-btn {
-    width: 200px;
+    width: 300px;
     margin: 20px;
     text-align: center;
-    border: 2px solid #011627;
+    border: 2px solid #031927;
     border-radius: 2px;
 }
 
 .app-tile-btn-title {
-  border-bottom: 2px solid #011627;
+  border-bottom: 2px solid #031927;
   padding: 5px 0;
-  background: #F6F7F8;
+  background: #FCFAF9;
 }
 
 .app-tile-btn-body {
-  height: 100px;
-  padding: 3px 0;
-  background: linear-gradient(#2EC4B6, #31D8C8);
-  line-height: 100px;
+  height: 200px;
+  background: #031927;
+}
+
+.app-tile-btn-body i {
+  line-height: 130px;
+  font-size: 64px;
+  color: #FCFAF9;
+}
+
+.app-tile-launch-btn {
+  margin: auto;
+  background: #A3BAC3;
+  border: 1px solid #FCFAF9;
+  border-radius: 2px;
+  width: 100px;
+  padding: 10px;
+}
+
+.app-tile-launch-btn:hover {
+  cursor: pointer;
 }
 
 .baseball-loading-popup {
