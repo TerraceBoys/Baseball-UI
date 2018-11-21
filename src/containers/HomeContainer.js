@@ -80,6 +80,7 @@ class HomeContainer extends Component {
             icon="baseball-ball"
             label="Baseball"
             launchApp={this.props.launchBaseball}
+            withS={true}
           />
           <AppTile
             className="launch-people-button"
@@ -92,6 +93,12 @@ class HomeContainer extends Component {
             icon="beer"
             label="Beer Boys"
             launchApp={this.handleBeerBoysClick}
+          />
+          <AppTile
+            className="launch-spotify-button"
+            icon="spotify"
+            label="Party Boys"
+            launchApp={this.handleSpotifyClick}
           />
         </div>
       </div>

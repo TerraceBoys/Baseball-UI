@@ -1,4 +1,4 @@
-import keymirror from 'keymirror';
+import keymirror from "keymirror";
 
 const types = keymirror({
   LAUNCH_MBTA_REQUESTED: null,
@@ -28,6 +28,19 @@ const types = keymirror({
   PICK_PERSON_REQUESTED: null,
   PICK_PERSON_SUCCEEDED: null,
   PICK_PERSON_FAILED: null,
+
+  FETCH_PLAYLIST_SONGS_REQUESTED: null,
+  FETCH_PLAYLIST_SONGS_SUCCEEDED: null,
+  FETCH_PLAYLIST_SONGS_FAILED: null,
+  FETCH_SEARCH_SONGS_REQUESTED: null,
+  FETCH_SEARCH_SONGS_SUCCEEDED: null,
+  FETCH_SEARCH_SONGS_FAILED: null,
+  ADD_SONG_REQUESTED: null,
+  ADD_SONG_SUCCEEDED: null,
+  ADD_SONG_FAILED: null,
+  FETCH_CURRENTLY_PLAYING_REQUESTED: null,
+  FETCH_CURRENTLY_PLAYING_SUCCEEDED: null,
+  FETCH_CURRENTLY_PLAYING_FAILED: null
 });
 
 export default types;
