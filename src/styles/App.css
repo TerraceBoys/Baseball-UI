@@ -5,6 +5,14 @@
   font-size: 16px;
 }
 
+.m-top-1 {
+  margin-top: 10px;
+}
+
+.m-top-2 {
+  margin-top: 20px;
+}
+
 .m-top-3 {
   margin-top: 30px;
 }
@@ -17,11 +25,15 @@
   display: flex;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 @-webkit-keyframes rotating {
-  from{
+  from {
     -webkit-transform: rotate(0deg);
   }
-  to{
+  to {
     -webkit-transform: rotate(360deg);
   }
 }
@@ -45,6 +57,9 @@ button:hover {
   border-radius: 3px;
   font-size: 1.1rem;
   float: right;
+  background: #031927;
+  color: #fcfaf9;
+  border: 1px solid #fcfaf9;
 }
 
 .not-found {

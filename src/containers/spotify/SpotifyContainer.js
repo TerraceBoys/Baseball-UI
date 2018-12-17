@@ -15,7 +15,7 @@ class SpotifyContainer extends Component {
       <div className="spotify-container">
         <SimpleHeader
           headerClass="spotify-header"
-          headerText="Party Boys"
+          headerText="Spotify Queue"
           pushRoute={pushRoute}
         />
         <div className="spotify-content">{children}</div>

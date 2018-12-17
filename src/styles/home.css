@@ -41,7 +41,7 @@
 }
 
 .app-tile-btn-body i {
-  line-height: 130px;
+  line-height: 120px;
   font-size: 64px;
   color: #FCFAF9;
 }
@@ -57,6 +57,16 @@
 
 .app-tile-launch-btn:hover {
   cursor: pointer;
+}
+
+.app-tile-password-input {
+  margin-top: 10px;
+  font-size: 12px;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  width: 110px;
+  padding: 3px;
 }
 
 .baseball-loading-popup {

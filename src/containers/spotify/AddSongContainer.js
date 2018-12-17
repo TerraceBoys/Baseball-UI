@@ -1,7 +1,9 @@
+import { debounce } from 'underscore';
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 import { push } from "react-router-redux";
 import SpotifyList from "../../components/SpotifyList";
+import FaIcon from "../../components/FaIcon";
 import { getSpotifySearchSongs } from "../../selectors/spotifySelectors";
 import { addSongToQueue, fetchSearchSongs } from "../../actions/spotifyActions";
 
@@ -25,22 +27,23 @@ class AddSongContainer extends Component {
     };
 
     this.handleBackClick = this.handleBackClick.bind(this);
-    this.handleSearchStringChange = this.handleSearchStringChange.bind(this);
-    this.handleSearchForSongClick = this.handleSearchForSongClick.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleAddClick = this.handleAddClick.bind(this);
+    this.debouncedSearchForSong = debounce(this.searchForSong.bind(this), 1000);
   }
 
   handleBackClick() {
     this.props.pushRoute("/spotify");
   }
 
-  handleSearchStringChange(e) {
+  handleSearchChange(e) {
     if (e.target.value !== " ") {
       this.setState({ searchString: e.target.value });
+      this.debouncedSearchForSong();
     }
   }
 
-  handleSearchForSongClick() {
+  searchForSong() {
     const { searchString } = this.state;
     if (searchString) {
       this.props.fetchSearchSongs(searchString);
@@ -56,18 +59,22 @@ class AddSongContainer extends Component {
     const { searchSongs } = this.props;
     return (
       <div>
-        <button onClick={this.handleBackClick}>Back</button>
-        <div>Search for a song to Add</div>
-        <input
-          type="text"
-          value={searchString}
-          onChange={this.handleSearchStringChange}
-        />
-        <button onClick={this.handleSearchForSongClick}>Search</button>
+        <button className="spotify-back-button" onClick={this.handleBackClick}>
+          <FaIcon name="chevron-left" />
+          Back
+        </button>
+        <div className="spotify-search-container">
+          <input
+            type="text"
+            value={searchString}
+            onChange={this.handleSearchChange}
+            placeholder="Search"
+          />
+        </div>
         <div>
           <SpotifyList
             addToQueueCallback={this.handleAddClick}
-            header="Song search results"
+            header="Results"
             songs={searchSongs}
           />
         </div>

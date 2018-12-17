@@ -39,15 +39,37 @@ class PlaylistContainer extends Component {
     this.props.pushRoute("/spotify/add-song");
   }
 
+  renderCurrentlyPlayingSong() {
+    const { currentlyPlaying } = this.props;
+
+    if (currentlyPlaying) {
+      return (
+        <div className="spotify-currently-playing">
+          <div className="spotify-currently-playing-header">Playing now</div>
+          <img src="http://i.imgur.com/nszu54A.jpg" alt="N/A" />
+          <div className="spotify-currently-playing-song">
+            {currentlyPlaying.name}
+          </div>
+        </div>
+      );
+    }
+    return null;
+  }
+
   render() {
-    const { currentlyPlaying, playlistSongs } = this.props;
+    const { playlistSongs } = this.props;
     return (
       <div>
-        {currentlyPlaying && (
-          <div>currently playing: {currentlyPlaying.name}</div>
-        )}
-        <button onClick={this.handleAddSongClick}>Queue New Song</button>
-        <SpotifyList header="Current playlist songs" songs={playlistSongs} />
+        <div className="display-flex justify-center m-top-2">
+          <button
+            className="spotify-add-button"
+            onClick={this.handleAddSongClick}
+          >
+            Add song
+          </button>
+        </div>
+        {this.renderCurrentlyPlayingSong()}
+        <SpotifyList header="Up next" songs={playlistSongs} />
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from "react";
+import FaIcon from "./FaIcon";
 
 const LOCKED_PASSWORD = "12345";
 
@@ -9,6 +10,7 @@ class AppTile extends Component {
       showPasswordPrompt: false,
       password: ""
     };
+
     this.handleLaunchClick = this.handleLaunchClick.bind(this);
     this.handlePasswordUpdate = this.handlePasswordUpdate.bind(this);
   }
@@ -38,16 +40,18 @@ class AppTile extends Component {
 
     return (
       <div>
-        {showPasswordPrompt ? (
-          <input
-            type="text"
-            onChange={this.handlePasswordUpdate}
-            value={password}
-          />
-        ) : null}
         <div className="app-tile-launch-btn" onClick={this.handleLaunchClick}>
           Launch
         </div>
+        {showPasswordPrompt ? (
+          <input
+            className="app-tile-password-input"
+            type="password"
+            onChange={this.handlePasswordUpdate}
+            placeholder="Password"
+            value={password}
+          />
+        ) : null}
       </div>
     );
   }
@@ -58,10 +62,7 @@ class AppTile extends Component {
       <div className={`app-tile-btn ${className}`}>
         <div className="app-tile-btn-title">{label}</div>
         <div className="app-tile-btn-body">
-          <i
-            className={`fa${iconV2 ? "s" : ""} fa-${icon}`}
-            aria-hidden="true"
-          />
+          <FaIcon isV2Icon={iconV2} name={icon} />
           {this.renderLaunchButton()}
         </div>
       </div>

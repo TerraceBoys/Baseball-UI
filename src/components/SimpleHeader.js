@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from "react";
+import FaIcon from "./FaIcon";
 
 class SimpleHeader extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class SimpleHeader extends Component {
 
   handleHomeClick() {
     const { pushRoute } = this.props;
-    pushRoute('/');
+    pushRoute("/");
   }
 
   render() {
@@ -17,7 +18,7 @@ class SimpleHeader extends Component {
       <div className={`simple-header ${headerClass}`}>
         {headerText}
         <button className="home-button" onClick={this.handleHomeClick}>
-          Home
+          <FaIcon name="home" />
         </button>
       </div>
     );
@@ -27,7 +28,7 @@ class SimpleHeader extends Component {
 SimpleHeader.propTypes = {
   headerClass: PropTypes.string.isRequired,
   headerText: PropTypes.string.isRequired,
-  pushRoute: PropTypes.func.isRequired,
+  pushRoute: PropTypes.func.isRequired
 };
 
 export default SimpleHeader;

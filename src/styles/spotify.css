@@ -1,34 +1,123 @@
 .spotify-container {
-  background: #ffffff;
+  background: #191414;
   height: 100%;
 }
 
 .spotify-header {
-  color: #ffffff;
+  color: #191414;
   border-bottom: 1px solid #ffffff;
-  background: #191414;
+  background: #1db954;
 }
 
 .spotify-content {
   width: 95%;
   margin: auto;
+  color: #ffffff;
 }
 
-.spotify-list {
+/* Main page styles */
+.spotify-add-button {
+  background: #1db954;
+  border: none;
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 5px 20px;
+  outline: none;
+}
+
+.spotify-currently-playing {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  margin-top: 15px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
 }
 
-.spotify-list div {
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-  height: 50px;
-  border-bottom: 1px solid black;
+.spotify-currently-playing-header {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+.spotify-currently-playing img {
+  height: 70px;
+  width: 70px;
+}
+
+.spotify-currently-playing-song {
+  font-size: 20px;
+  padding: 5px 0;
+}
+
+/* List Styles */
+.spotify-list {
+  height: 400px;
+  overflow: auto;
 }
 
 .spotify-list-header {
   font-size: 24px;
-  color: #191414;
   font-weight: bold;
+}
+
+.spotify-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.spotify-list-item img {
+  margin-right: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+.spotify-list-item .img-title-wrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+/* Add Song Page Styles */
+.spotify-back-button {
+  font-size: 16px;
+  padding: 10px 5px 0 5px;
+  color: #ffffff;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.spotify-back-button i {
+  padding-right: 5px;
+}
+
+.spotify-add-song-button {
+  font-size: 24px;
+  color: #ffffff;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.spotify-search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+}
+
+.spotify-search-container input {
+  height: 20px;
+  width: 300px;
+  padding: 5px 10px;
+  font-size: 16px;
+  border: 2px solid #1db954;
+  border-radius: 20px;
+  outline: none;
 }
