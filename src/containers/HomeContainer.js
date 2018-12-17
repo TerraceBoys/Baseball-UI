@@ -73,6 +73,7 @@ class HomeContainer extends Component {
             className="launch-mbta-button"
             icon="subway"
             label="MBTA Times"
+            passwordRequired={true}
             launchApp={this.props.launchMBTA}
           />
           <AppTile
@@ -80,24 +81,28 @@ class HomeContainer extends Component {
             icon="baseball-ball"
             label="Baseball"
             launchApp={this.props.launchBaseball}
-            withS={true}
+            passwordRequired={true}
+            iconV2={true}
           />
           <AppTile
             className="launch-people-button"
             icon="hand-o-up"
             label="Person Picker"
+            passwordRequired={true}
             launchApp={this.props.launchPersonPicker}
           />
           <AppTile
             className="launch-beer-boys-button"
             icon="beer"
             label="Beer Boys"
+            passwordRequired={true}
             launchApp={this.handleBeerBoysClick}
           />
           <AppTile
             className="launch-spotify-button"
             icon="spotify"
-            label="Party Boys"
+            label="Spotify"
+            passwordRequired={false}
             launchApp={this.handleSpotifyClick}
           />
         </div>
