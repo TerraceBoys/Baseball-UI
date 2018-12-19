@@ -37,10 +37,18 @@ class AppTile extends Component {
 
   renderLaunchButton() {
     const { password, showPasswordPrompt } = this.state;
+    const { passwordRequired } = this.props;
+    const locked = passwordRequired && !showPasswordPrompt;
 
     return (
       <div>
-        <div className="app-tile-launch-btn" onClick={this.handleLaunchClick}>
+        <div
+          className={`app-tile-launch-btn ${
+            locked ? "app-tile-launch-btn-locked" : ""
+          }`}
+          onClick={this.handleLaunchClick}
+        >
+          {locked && <FaIcon name="lock" />}
           Launch
         </div>
         {showPasswordPrompt ? (
@@ -59,10 +67,10 @@ class AppTile extends Component {
   render() {
     const { className, icon, label, iconV2 } = this.props;
     return (
-      <div className={`app-tile-btn ${className}`}>
-        <div className="app-tile-btn-title">{label}</div>
-        <div className="app-tile-btn-body">
-          <FaIcon isV2Icon={iconV2} name={icon} />
+      <div className={`app-tile ${className}`}>
+        <div className="app-tile-title">{label}</div>
+        <div className="app-tile-body">
+          <FaIcon classNames="app-tile-icon" isV2Icon={iconV2} name={icon} />
           {this.renderLaunchButton()}
         </div>
       </div>

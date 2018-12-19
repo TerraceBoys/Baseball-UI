@@ -2,7 +2,7 @@ import actionTypes from "./types";
 import axios from "axios";
 //import { AWS_SPOTIFY_API } from "../config";
 
-const AWS_SPOTIFY_API = 'http://192.168.86.249:7000';
+const AWS_SPOTIFY_API = "http://192.168.86.249:7000";
 
 const axiosInstance = axios.create({
   baseURL: AWS_SPOTIFY_API,
@@ -25,7 +25,7 @@ export const fetchCurrentlyPlaying = () => {
       });
     axiosInstance.get("/playing").then(success, error);
   };
-}
+};
 
 export const fetchPlaylistSongs = () => {
   return dispatch => {

@@ -1,10 +1,14 @@
 import React, { PropTypes } from "react";
 
-const FaIcon = ({ isV2Icon, name }) => (
-  <i className={`fa${isV2Icon ? "s" : ""} fa-${name}`} aria-hidden="true" />
+const FaIcon = ({ classNames, isV2Icon, name }) => (
+  <i
+    className={`fa${isV2Icon ? "s" : ""} fa-${name} ${classNames}`}
+    aria-hidden="true"
+  />
 );
 
 FaIcon.propTypes = {
+  classNames: PropTypes.string,
   isV2Icon: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired
 };

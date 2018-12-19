@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import './../styles/app.css';
+import React, { Component, PropTypes } from "react";
+import "./../styles/app.css";
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
-  gameId: PropTypes.string,
+  gameId: PropTypes.string
 };
 
 export default App;
