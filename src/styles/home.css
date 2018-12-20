@@ -6,7 +6,7 @@
 
 .home-title {
     color: #FCFAF9;
-    height: 40px;
+    min-height: 40px;
     line-height: 40px;
     letter-spacing: 3px;
     font-size: 32px;

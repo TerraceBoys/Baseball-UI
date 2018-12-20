@@ -46,7 +46,14 @@ class PlaylistContainer extends Component {
       return (
         <div className="spotify-currently-playing">
           <div className="spotify-currently-playing-header">Playing now</div>
-          <img src="http://i.imgur.com/nszu54A.jpg" alt="N/A" />
+          <img
+            src={
+              currentlyPlaying.albumSrc
+                ? currentlyPlaying.albumSrc
+                : "http://i.imgur.com/nszu54A.jpg"
+            }
+            alt=""
+          />
           <div className="spotify-currently-playing-song">
             {currentlyPlaying.name}
           </div>
