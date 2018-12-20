@@ -71,6 +71,7 @@ class SpotifyList extends Component {
 
 SpotifyList.propTypes = {
   addToQueueCallback: PropTypes.func,
+  playSongCallback: PropTypes.func,
   header: PropTypes.string.isRequired,
   songs: PropTypes.array
 };
