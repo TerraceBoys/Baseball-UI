@@ -13,9 +13,9 @@ const FAKE_SONGS = [
 ];
 
 const initialState = {
-  currentlyPlaying: { id: 1, name: "fight it", artist: "mr popular" },
-  playlistSongs: FAKE_SONGS,
-  searchSongs: FAKE_SONGS
+  currentlyPlaying: null,
+  playlistSongs: [],
+  searchSongs: []
 };
 
 export default (state = initialState, action) => {
