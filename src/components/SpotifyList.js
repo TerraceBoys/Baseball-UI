@@ -39,7 +39,10 @@ class SpotifyList extends Component {
         return (
           <div key={i} className="spotify-list-item">
             <div className="img-title-wrapper">
-              <img src="http://i.imgur.com/nszu54A.jpg" alt="N/A" />
+              <img
+                src={song.src ? song.src : "http://i.imgur.com/nszu54A.jpg"}
+                alt=""
+              />
               <div>
                 {song.name} - {song.artist}
               </div>
@@ -52,9 +55,7 @@ class SpotifyList extends Component {
         );
       });
     }
-    return (
-      <div className="display-flex justify-center">No songs</div>
-    );
+    return <div className="display-flex justify-center">No songs</div>;
   }
 
   render() {
