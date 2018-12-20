@@ -40,7 +40,7 @@ class SpotifyList extends Component {
           <div key={i} className="spotify-list-item">
             <div className="img-title-wrapper">
               <img
-                src={song.src ? song.src : "http://i.imgur.com/nszu54A.jpg"}
+                src={song.albumSrc ? song.albumSrc : "http://i.imgur.com/nszu54A.jpg"}
                 alt=""
               />
               <div>
