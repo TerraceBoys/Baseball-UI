@@ -1,25 +1,25 @@
-import actionTypes from './types';
-import axios from 'axios';
-import { AWS_MBTA_API } from '../config';
+import actionTypes from "./types";
+import axios from "axios";
+import config from "../config";
 
 const axiosInstance = axios.create({
-  baseURL: AWS_MBTA_API,
-  timeout: 5000,
+  baseURL: config.AWS_MBTA_API,
+  timeout: 5000
 });
 
 export const pickPerson = people => {
   return dispatch => {
     dispatch({
-      type: actionTypes.PICK_PERSON_REQUESTED,
+      type: actionTypes.PICK_PERSON_REQUESTED
     });
     const success = resp =>
       dispatch({
-        type: actionTypes.PICK_PERSON_SUCCEEDED,
+        type: actionTypes.PICK_PERSON_SUCCEEDED
       });
     const error = err =>
       dispatch({
-        type: actionTypes.PICK_PERSON_FAILED,
+        type: actionTypes.PICK_PERSON_FAILED
       });
-    axiosInstance.post('/pick', { people }).then(success, error);
+    axiosInstance.post("/pick", { people }).then(success, error);
   };
 };

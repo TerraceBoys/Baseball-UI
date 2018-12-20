@@ -1,9 +1,9 @@
 import actionTypes from "./types";
 import axios from "axios";
-import { AWS_SPOTIFY_API } from "../config";
+import config from "../config";
 
 const axiosInstance = axios.create({
-  baseURL: AWS_SPOTIFY_API,
+  baseURL: config.AWS_SPOTIFY_API,
   timeout: 5000
 });
 
