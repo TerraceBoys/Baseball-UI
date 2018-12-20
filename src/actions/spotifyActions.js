@@ -77,3 +77,20 @@ export const addSongToQueue = songId => {
     axiosInstance.post("/add", { id: songId }).then(success, error);
   };
 };
+
+export const playSong = songId => {
+  return dispatch => {
+    dispatch({
+      type: actionTypes.PLAY_SONG_REQUESTED
+    });
+    const success = resp =>
+      dispatch({
+        type: actionTypes.PLAY_SONG_SUCCEEDED
+      });
+    const error = err =>
+      dispatch({
+        type: actionTypes.PLAY_SONG_FAILED
+      });
+    axiosInstance.post("/play", { id: songId }).then(success, error);
+  };
+};

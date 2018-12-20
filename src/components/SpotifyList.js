@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react";
 import FaIcon from "./FaIcon";
 
 class SpotifyList extends Component {
-  renderActionsForItem(songId) {
+  renderAddActionForSong(songId) {
     const { addToQueueCallback } = this.props;
     if (addToQueueCallback) {
       return (
@@ -11,6 +11,21 @@ class SpotifyList extends Component {
           onClick={() => addToQueueCallback(songId)}
         >
           <FaIcon isV2Icon={true} name="plus-square" />
+        </button>
+      );
+    }
+    return null;
+  }
+
+  renderPlayActionForSong(songId) {
+    const { playSongCallback } = this.props;
+    if (playSongCallback) {
+      return (
+        <button
+          className="spotify-add-song-button"
+          onClick={() => playSongCallback(songId)}
+        >
+          <FaIcon isV2Icon={true} name="play" />
         </button>
       );
     }
@@ -29,7 +44,10 @@ class SpotifyList extends Component {
                 {song.name} - {song.artist}
               </div>
             </div>
-            {this.renderActionsForItem(song.id)}
+            <div>
+              {this.renderAddActionForSong(song.id)}
+              {this.renderPlayActionForSong(song.id)}
+            </div>
           </div>
         );
       });
