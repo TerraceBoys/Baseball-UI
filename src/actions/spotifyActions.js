@@ -1,8 +1,6 @@
 import actionTypes from "./types";
 import axios from "axios";
-//import { AWS_SPOTIFY_API } from "../config";
-
-const AWS_SPOTIFY_API = "http://192.168.86.249:7000";
+import { AWS_SPOTIFY_API } from "../config";
 
 const axiosInstance = axios.create({
   baseURL: AWS_SPOTIFY_API,
