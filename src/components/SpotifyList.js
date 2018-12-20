@@ -34,7 +34,9 @@ class SpotifyList extends Component {
         );
       });
     }
-    return null;
+    return (
+      <div className="display-flex justify-center">No songs</div>
+    );
   }
 
   render() {
