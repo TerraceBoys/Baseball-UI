@@ -1,6 +1,7 @@
 import actionTypes from "./types";
 import axios from "axios";
 import config from "../config";
+import { push } from "react-router-redux";
 
 const axiosInstance = axios.create({
   baseURL: config.AWS_SPOTIFY_API,
@@ -66,31 +67,16 @@ export const addSongToQueue = songId => {
     dispatch({
       type: actionTypes.ADD_SONG_REQUESTED
     });
-    const success = resp =>
+    const success = resp => {
       dispatch({
         type: actionTypes.ADD_SONG_SUCCEEDED
       });
+      dispatch(push('/spotify'));
+    }
     const error = err =>
       dispatch({
         type: actionTypes.ADD_SONG_FAILED
       });
     axiosInstance.post("/add", { id: songId }).then(success, error);
-  };
-};
-
-export const playSong = songId => {
-  return dispatch => {
-    dispatch({
-      type: actionTypes.PLAY_SONG_REQUESTED
-    });
-    const success = resp =>
-      dispatch({
-        type: actionTypes.PLAY_SONG_SUCCEEDED
-      });
-    const error = err =>
-      dispatch({
-        type: actionTypes.PLAY_SONG_FAILED
-      });
-    axiosInstance.post("/play", { id: songId }).then(success, error);
   };
 };

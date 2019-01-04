@@ -1,6 +1,6 @@
 .spotify-container {
   background: #191414;
-  height: 100%;
+  min-height: 100%;
 }
 
 .spotify-header {
@@ -52,11 +52,6 @@
 }
 
 /* List Styles */
-.spotify-list {
-  height: 400px;
-  overflow: auto;
-}
-
 .spotify-list-header {
   font-size: 24px;
   font-weight: bold;

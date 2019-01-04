@@ -24,15 +24,28 @@ const mapDispatchToProps = {
   pushRoute: push
 };
 
+const WAIT_TO_REFRESH_CURRENTLY_PLAYING = 10000;
+
 class PlaylistContainer extends Component {
   constructor(props) {
     super(props);
+    this.fetchCurrentlyPlayingAndUpdateTimeout = this.fetchCurrentlyPlayingAndUpdateTimeout.bind(this);
     this.handleAddSongClick = this.handleAddSongClick.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchCurrentlyPlaying();
     this.props.fetchPlaylistSongs();
+    this.periodicallyRefreshCurrentlyPlaying();
+  }
+
+  periodicallyRefreshCurrentlyPlaying() {
+    setTimeout(this.fetchCurrentlyPlayingAndUpdateTimeout, WAIT_TO_REFRESH_CURRENTLY_PLAYING);
+  }
+
+  fetchCurrentlyPlayingAndUpdateTimeout() {
+    this.props.fetchCurrentlyPlaying();
+    this.periodicallyRefreshCurrentlyPlaying();
   }
 
   handleAddSongClick() {

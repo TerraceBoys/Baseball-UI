@@ -7,7 +7,6 @@ import FaIcon from "../../components/FaIcon";
 import { getSpotifySearchSongs } from "../../selectors/spotifySelectors";
 import {
   addSongToQueue,
-  playSong,
   fetchSearchSongs
 } from "../../actions/spotifyActions";
 
@@ -19,7 +18,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   addSongToQueue,
-  playSong,
   fetchSearchSongs,
   pushRoute: push
 };
@@ -34,7 +32,6 @@ class AddSongContainer extends Component {
     this.handleBackClick = this.handleBackClick.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleAddClick = this.handleAddClick.bind(this);
-    this.handlePlayClick = this.handlePlayClick.bind(this);
     this.debouncedSearchForSong = debounce(this.searchForSong.bind(this), 1000);
   }
 
@@ -60,10 +57,6 @@ class AddSongContainer extends Component {
     this.props.addSongToQueue(songId);
   }
 
-  handlePlayClick(songId) {
-    this.props.playSong(songId);
-  }
-
   render() {
     const { searchString } = this.state;
     const { searchSongs } = this.props;
@@ -84,7 +77,6 @@ class AddSongContainer extends Component {
         <div>
           <SpotifyList
             addToQueueCallback={this.handleAddClick}
-            playSongCallback={this.handlePlayClick}
             header="Results"
             songs={searchSongs}
           />

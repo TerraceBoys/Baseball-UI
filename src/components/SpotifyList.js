@@ -17,21 +17,6 @@ class SpotifyList extends Component {
     return null;
   }
 
-  renderPlayActionForSong(songId) {
-    const { playSongCallback } = this.props;
-    if (playSongCallback) {
-      return (
-        <button
-          className="spotify-add-song-button"
-          onClick={() => playSongCallback(songId)}
-        >
-          <FaIcon isV2Icon={true} name="play" />
-        </button>
-      );
-    }
-    return null;
-  }
-
   renderListItems() {
     const { songs } = this.props;
     if (songs && songs.length) {
@@ -49,7 +34,6 @@ class SpotifyList extends Component {
             </div>
             <div>
               {this.renderAddActionForSong(song.id)}
-              {this.renderPlayActionForSong(song.id)}
             </div>
           </div>
         );
@@ -63,7 +47,7 @@ class SpotifyList extends Component {
     return (
       <div className="m-top-1">
         <div className="spotify-list-header">{header}</div>
-        <div className="spotify-list m-top-2">{this.renderListItems()}</div>
+        <div className="m-top-2">{this.renderListItems()}</div>
       </div>
     );
   }
@@ -71,7 +55,6 @@ class SpotifyList extends Component {
 
 SpotifyList.propTypes = {
   addToQueueCallback: PropTypes.func,
-  playSongCallback: PropTypes.func,
   header: PropTypes.string.isRequired,
   songs: PropTypes.array
 };
